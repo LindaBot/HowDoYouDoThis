@@ -1,22 +1,35 @@
 import * as React from 'react';
 import './App.css';
+import LoginInterface from './components/LoginInterface'
 
-import logo from './logo.svg';
-
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+interface IState{
+  userID: string
 }
 
-export default App;
+export default class App extends React.Component<{}, IState> {
+  constructor(props: any){
+    super(props)
+    this.state = ({
+      userID: "null"
+    })
+  }
+
+  public render() {
+    const {userID} = this.state;
+    if (userID === "null"){
+      return (
+          <div className="container-fluid">
+            <div className="centreText">
+              <LoginInterface userID={this.state.userID}/>
+            </div>
+          </div>
+        );
+    } else {
+      return (
+        <div>
+          Good
+        </div>
+      )
+    }
+  }
+}

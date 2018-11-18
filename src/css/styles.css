@@ -1,0 +1,18 @@
+.centreText {
+    text-align: center;
+    display: flex;
+ 
+}
+
+h1 {
+    font-size: 150px;
+}
+
+html{
+    font-size: 16px;
+}
+
+.centreElement{
+    margin-left: auto;
+    margin-right: auto;
+}
