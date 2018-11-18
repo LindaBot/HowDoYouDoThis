@@ -3,33 +3,37 @@ import './App.css';
 import LoginInterface from './components/LoginInterface'
 
 interface IState{
-  userID: string
+  userInfo: any
 }
 
 export default class App extends React.Component<{}, IState> {
   constructor(props: any){
     super(props)
     this.state = ({
-      userID: "null"
+      userInfo: "null"
     })
   }
 
   public render() {
-    const {userID} = this.state;
-    if (userID === "null"){
+    const {userInfo} = this.state;
+    if (userInfo === "null"){
       return (
           <div className="container-fluid">
             <div className="centreText">
-              <LoginInterface userID={this.state.userID}/>
+              <LoginInterface onLogin={this.onLogin}/>
             </div>
           </div>
         );
     } else {
       return (
         <div>
-          Good
+          Hello, {this.state.userInfo.name}
         </div>
       )
     }
+  }
+
+  private onLogin = (userInfo: any) => {
+    this.setState({userInfo});
   }
 }

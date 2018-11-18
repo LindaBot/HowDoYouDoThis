@@ -57,7 +57,8 @@ export default class LoginInterface extends React.Component<any, IState>{
     }
 
     private loginClick = (username: string, password: string) => {
-        alert("Login" + username + password);
+        let userInfo = JSON.parse('{"name": "David"}');
+        this.props.onLogin(userInfo);
     }
 
     private registerClick = (username: string, password: string) => {
