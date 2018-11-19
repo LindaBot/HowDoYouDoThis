@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import LoginInterface from './components/LoginInterface'
 import AddQuestionButton from './components/AddQuestionButton';
+import QuestionTagSearchBar from './components/QuestionTagSearchBar';
 
 interface IState{
   userInfo: any
@@ -33,6 +34,7 @@ export default class App extends React.Component<{}, IState> {
           Hello, {this.state.userInfo.firstName}
           <button onClick={this.onLogout}>Logout</button>
           <AddQuestionButton />
+          <QuestionTagSearchBar userInfo={this.state.userInfo}/>
         </div>
       )
     }

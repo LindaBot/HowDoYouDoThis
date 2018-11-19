@@ -1,24 +1,46 @@
 import * as React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { IndexLinkContainer } from "react-router-bootstrap";
-import { Link } from 'react-router-dom';
+/* import { IndexLinkContainer } from "react-router-bootstrap";
+import { Link } from 'react-router-dom'; */
 
-export const Header: React.StatelessComponent<{}> = () => {
-    return (
-        <Navbar>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <Link to="/">dankNotDank</Link>
-                </Navbar.Brand>
-            </Navbar.Header>
-            <Nav>
-                <IndexLinkContainer to="/FirstComponent">
-                    <NavItem>Page 1</NavItem>
-                </IndexLinkContainer>
-                <IndexLinkContainer to="/SecondComponent">
-                    <NavItem>Page 2</NavItem>
-                </IndexLinkContainer>
-            </Nav>
-        </Navbar>
-    );
+export default class Header extends React.Component<{}>{
+
+    constructor(props: any){
+        super(props);
+    }
+    render(){
+        return (
+            <Navbar inverse collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                    <a href="#brand">React-Bootstrap</a>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                    <Nav>
+                    <NavItem eventKey={1} href="#">
+                        Link
+                    </NavItem>
+                    <NavItem eventKey={2} href="#">
+                        Link
+                    </NavItem>
+                    
+                    </Nav>
+                    <Nav pullRight>
+                    <NavItem eventKey={1} href="#" >
+                        Link Right
+                    </NavItem>
+                    <NavItem eventKey={2} onClick={this.logout}>
+                        Logout
+                    </NavItem>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        );
+    }
+    private logout = () => {
+        localStorage.removeItem("user");
+        location.reload();
+    }
 }

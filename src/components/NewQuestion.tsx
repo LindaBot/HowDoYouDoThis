@@ -12,8 +12,6 @@ interface IState{
     suggestions: any
 }
 
-
-
 export default class NewQuestion extends React.Component<any, IState>{
     constructor(props: any){
         super(props);
@@ -31,10 +29,10 @@ export default class NewQuestion extends React.Component<any, IState>{
                 label: suggestion.label
               }))
         }
+        this.getTags();
     };
     
     render(){
-        
         return(
             <div className="centre80">
                 <h2> New Question </h2>
@@ -110,5 +108,20 @@ export default class NewQuestion extends React.Component<any, IState>{
         }
         formData.append("authorID", state.user.authorID);
         this.props.onSubmit(formData);
+    }
+
+    private getTags = () => {
+        fetch("https://howdoidothisapixlin928.azurewebsites.net/api/question/tag", {
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(suggestions =>{
+            const tags = suggestions.map((suggestion:any, i:any) => ({
+                        value: suggestion,
+                        label: suggestion
+                    }));
+            this.setState({suggestions: tags});
+        })
+
     }
 }
