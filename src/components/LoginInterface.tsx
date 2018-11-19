@@ -1,7 +1,9 @@
 import * as React from 'react'
 import {AppBar, Tabs, Tab, Typography} from "@material-ui/core"
 import SwipeableViews from 'react-swipeable-views';
-import UserPassBut from './UserPassBut'
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+import * as CryptoJS from 'crypto-js'
 
 interface IState{
     username: string,
@@ -40,11 +42,11 @@ export default class LoginInterface extends React.Component<any, IState>{
                 onChangeIndex={this.handleChange}
                 >
                 <Typography component="div" style={{ padding: 8 * 3 }}>
-                    <UserPassBut onSubmit={this.loginClick} hintText={"Login"}/>
+                    <LoginForm onSubmit={this.loginClick} hintText={"Login"}/>
                 </Typography>
 
                 <Typography component="div" style={{ padding: 8 * 3 }}>
-                    <UserPassBut onSubmit={this.registerClick} hintText={"Register"}/>
+                    <RegisterForm onSubmit={this.registerClick} hintText={"Register"}/>
                 </Typography>
 
             </SwipeableViews>
@@ -56,13 +58,51 @@ export default class LoginInterface extends React.Component<any, IState>{
         this.setState({value});
     }
 
-    private loginClick = (username: string, password: string) => {
-        let userInfo = JSON.parse('{"name": "David"}');
-        this.props.onLogin(userInfo);
+    private loginClick = (formData: FormData) => {
+        // const username = formData.get("username");
+        let userpass = formData.get("password") as string;
+        let username = formData.get("username") as string;
+    
+        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/User', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then((response: JSON) => {
+            console.log(response);
+            var count = Object.keys(response).length;
+            for(var i = 0; i < count; i++){
+                let userObject = response[i];
+                var password = CryptoJS.AES.decrypt(userObject.password, 'secret');
+                password = password.toString(CryptoJS.enc.Utf8);
+                console.log("User and password pair")
+                console.log(userpass);
+                console.log(password);
+                if (userpass == password && username === userObject.username){
+                    return(this.props.onLogin(userObject));
+                }
+            }
+            alert("Please check your username and password")
+        });
     }
 
-    private registerClick = (username: string, password: string) => {
-        alert("Register" + username + password);
+    private registerClick = (userData: FormData) => {
+        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/User', {
+            // body: userData,
+            method: 'POST',
+            body: userData,
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+            }
+        })
+        .then((response: any) => {
+            console.log(response)
+            if (response.ok){
+                alert("User created, please login");
+                location.reload();
+            } else {
+                alert("Username taken, please change your username")
+            }
+        })
     }
 }
 

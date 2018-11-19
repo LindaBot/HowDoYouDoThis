@@ -22,7 +22,7 @@ export default class UserPassBut extends React.Component<any, IState>{
                     id="outlined-name"
                     label="Username"
                     value={this.state.username}
-                    onChange={this.handleChangeUsername}
+                    onChange={(e) => {this.handleChangeValue(e, "username")}}
                     margin="normal"
                     variant="outlined"
                 />
@@ -32,8 +32,9 @@ export default class UserPassBut extends React.Component<any, IState>{
                 <TextField
                     id="outlined-name"
                     label="Password"
+                    type="password"
                     value={this.state.password}
-                    onChange={this.handleChangePassword}
+                    onChange={(e) => {this.handleChangeValue(e, "password")}}
                     margin="normal"
                     variant="outlined"
                 />
@@ -48,16 +49,24 @@ export default class UserPassBut extends React.Component<any, IState>{
         )
     }
 
-    private handleChangeUsername = (e: any) => {
-        this.setState({username: e.target.value});
-    }
-
-    private handleChangePassword = (e: any) => {
-        this.setState({password: e.target.value});
+    private handleChangeValue = (e: any, fieldName: string) => {
+        switch (fieldName){
+            case "username":
+                return(this.setState({username: e.target.value}));
+            case "password":
+                return(this.setState({password: e.target.value}));
+        }
     }
 
     private onSubmit = () =>{
-        this.props.onSubmit(this.state.username, this.state.password);
+        if (this.state.username != "" && this.state.username != ""){
+            let formData = new FormData();
+            formData.append('username', this.state.username);
+            formData.append('password', this.state.password);
+            this.props.onSubmit(formData);
+        } else {
+            alert("Please enter your username and password")
+        }
     }
 
 }

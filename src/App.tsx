@@ -9,14 +9,16 @@ interface IState{
 export default class App extends React.Component<{}, IState> {
   constructor(props: any){
     super(props)
+    console.log("CALLED");
     this.state = ({
-      userInfo: "null"
+      userInfo: JSON.parse(localStorage.getItem("user") as string)
     })
   }
 
   public render() {
     const {userInfo} = this.state;
-    if (userInfo === "null"){
+
+    if (userInfo === "" || userInfo === null){
       return (
           <div className="container-fluid">
             <div className="centreText">
@@ -27,13 +29,20 @@ export default class App extends React.Component<{}, IState> {
     } else {
       return (
         <div>
-          Hello, {this.state.userInfo.name}
+          Hello, {this.state.userInfo.firstName}
+          <button onClick={this.onLogout}>remove</button>
         </div>
       )
     }
   }
 
   private onLogin = (userInfo: any) => {
+    localStorage.setItem('user', JSON.stringify(userInfo));
     this.setState({userInfo});
+  }
+
+  private onLogout = () => {
+    localStorage.removeItem("user");
+    this.setState({userInfo: null});
   }
 }
