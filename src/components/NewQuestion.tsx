@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {TextField, Button} from '@material-ui/core'
 import CreatableSelect from 'react-select/lib/Creatable'
+import MediaStreamRecorder from 'msr'
 
 interface IState{
     title: string,
@@ -57,7 +58,13 @@ export default class NewQuestion extends React.Component<any, IState>{
                     variant="outlined"
                     value={this.state.description}
                     onChange={ (e) => this.onChangeInput(e, "description")}
-                /> <br/>
+                /> 
+                
+                <br/>
+
+                <Button onClick={this.inputByVoice}>TOUCH ME PLEEASE</Button>
+                <br/>
+
                 
                 
                 <CreatableSelect 
@@ -107,5 +114,64 @@ export default class NewQuestion extends React.Component<any, IState>{
         }
         formData.append("authorID", state.user.authorID);
         this.props.onSubmit(formData);
+    }
+
+    private inputByVoice = () => {
+        const mediaConstraints = {
+            audio: true
+        }
+        const onMediaSuccess = (stream: any) => {
+            const mediaRecorder = new MediaStreamRecorder(stream);
+            mediaRecorder.mimeType = 'audio/wav'; // check this line for audio/wav
+            mediaRecorder.ondataavailable = (blob: any) => {
+                mediaRecorder.stop()
+                this.PostAudio(blob);
+            }
+            mediaRecorder.start(3000);
+        }
+    
+        navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
+    
+        function onMediaError(e: any) {
+            console.error('media error', e);
+        }
+    }
+
+    private PostAudio = (blob: any) => {
+        let accessToken: any;
+        fetch('https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken', {
+            headers: {
+                'Content-Length': '0',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Ocp-Apim-Subscription-Key': '89e0a4141353471fa73369cc6a75f78d'
+            },
+            method: 'POST'
+        }).then((response) => {
+            // console.log(response.text())
+            return response.text()
+        }).then((response) => {
+            console.log(response)
+            accessToken = response
+        }).catch((error) => {
+            console.log("Error", error)
+        });
+           // posting audio
+           fetch('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US', {
+            body: blob, // this is a .wav audio file    
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer' + accessToken,
+                'Content-Type': 'audio/wav;codec=audio/pcm; samplerate=16000',
+                'Ocp-Apim-Subscription-Key': '7858d17484424d4d93d43c177c1268ce'
+            },    
+            method: 'POST'
+        }).then((res) => {
+            return res.json()
+        }).then((res: any) => {
+            const text = (res.DisplayText as string).slice(0, -1)
+            this.setState({description: text});
+        }).catch((error) => {
+            console.log("Error", error)
+        });
     }
 }
