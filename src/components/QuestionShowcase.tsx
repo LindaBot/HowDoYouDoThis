@@ -1,6 +1,4 @@
-import * as React from "react"
-import Select from 'react-select'
-import {Button} from '@material-ui/core'
+/* import * as React from "react"
 
 interface IState{
     tag: any
@@ -15,3 +13,15 @@ export default class QuestionShowcase extends React.Component<any, IState>{
             open: false
         };
     }
+    render(){
+        return(
+            <div>hello</div>
+        )
+    }
+    
+    private getQuestions = () =>{
+    
+    }
+}
+
+ */
