@@ -6,7 +6,7 @@ import MediaStreamRecorder from 'msr'
 interface IState{
     title: string,
     description: string,
-    tag: string,
+    tag: any,
     image: any,
     authorID: number,
     user: any,
@@ -62,7 +62,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 
                 <br/>
 
-                <Button onClick={this.inputByVoice}>TOUCH ME PLEEASE</Button>
+                <Button onClick={this.inputByVoice}>Touch me</Button>
                 <br/>
 
                 
@@ -100,7 +100,8 @@ export default class NewQuestion extends React.Component<any, IState>{
     }
 
     private onSubmit = () => {
-        const state = this.state
+        const state = this.state;
+        console.log();
         if (state.title === "" || state.description === "" || state.tag === ""){
             alert("Please fill in the form");
             return;
@@ -108,11 +109,12 @@ export default class NewQuestion extends React.Component<any, IState>{
         const formData = new FormData();
         formData.append("title", state.title);
         formData.append("description", state.description);
-        formData.append("tag", state.tag);
+        console.log(state.tag.value);
+        formData.append("tag", state.tag.value);
         if (state.image != ""){
             formData.append("image", state.image)
         }
-        formData.append("authorID", state.user.authorID);
+        formData.append("authorID", state.user.id);
         this.props.onSubmit(formData);
     }
 
