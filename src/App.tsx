@@ -33,11 +33,15 @@ export default class App extends React.Component<{}, IState> {
         );
     } else {
       return (
-        <div>
+        <div className="mainContent">
           Hello, {this.state.userInfo.firstName}
           <button onClick={this.onLogout}>Logout</button>
           <AddQuestionButton suggestions={this.state.suggestions} />
-          <QuestionTagSearchBar userInfo={this.state.userInfo}/>
+          {this.state.suggestions === "" ? 
+          <div>No Search is available right now</div> 
+          : 
+          <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions}/>}
+          
         </div>
       )
     }
