@@ -29,7 +29,6 @@ export default class NewQuestion extends React.Component<any, IState>{
                 label: suggestion.label
               }))
         }
-        this.getTags();
     };
     
     render(){
@@ -63,7 +62,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 
                 <CreatableSelect 
                     className="selectInput"
-                    options={this.state.suggestions}
+                    options={this.props.suggestions}
                     placeholder="Search a Tag"
                     value={this.state.tag}
                     onChange={ (e) => this.onChangeInput(e, "tag")}
@@ -108,20 +107,5 @@ export default class NewQuestion extends React.Component<any, IState>{
         }
         formData.append("authorID", state.user.authorID);
         this.props.onSubmit(formData);
-    }
-
-    private getTags = () => {
-        fetch("https://howdoidothisapixlin928.azurewebsites.net/api/question/tag", {
-            method: 'GET'
-        })
-        .then(res => res.json())
-        .then(suggestions =>{
-            const tags = suggestions.map((suggestion:any, i:any) => ({
-                        value: suggestion,
-                        label: suggestion
-                    }));
-            this.setState({suggestions: tags});
-        })
-
     }
 }

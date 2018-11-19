@@ -5,7 +5,8 @@ import AddQuestionButton from './components/AddQuestionButton';
 import QuestionTagSearchBar from './components/QuestionTagSearchBar';
 
 interface IState{
-  userInfo: any
+  userInfo: any,
+  suggestions: any
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -13,8 +14,10 @@ export default class App extends React.Component<{}, IState> {
     super(props)
     console.log("CALLED");
     this.state = ({
-      userInfo: JSON.parse(localStorage.getItem("user") as string)
+      userInfo: JSON.parse(localStorage.getItem("user") as string),
+      suggestions: ""
     })
+    this.getTags();
   }
 
   public render() {
@@ -33,7 +36,7 @@ export default class App extends React.Component<{}, IState> {
         <div>
           Hello, {this.state.userInfo.firstName}
           <button onClick={this.onLogout}>Logout</button>
-          <AddQuestionButton />
+          <AddQuestionButton suggestions={this.state.suggestions} />
           <QuestionTagSearchBar userInfo={this.state.userInfo}/>
         </div>
       )
@@ -48,5 +51,19 @@ export default class App extends React.Component<{}, IState> {
   private onLogout = () => {
     localStorage.removeItem("user");
     this.setState({userInfo: null});
+  }
+
+  private getTags = () => {
+      fetch("https://howdoidothisapixlin928.azurewebsites.net/api/question/tag", {
+          method: 'GET'
+      })
+      .then(res => res.json())
+      .then(suggestions =>{
+          const tags = suggestions.map((suggestion:any, i:any) => ({
+                      value: suggestion,
+                      label: suggestion
+                  }));
+          this.setState({suggestions: tags});
+      })
   }
 }

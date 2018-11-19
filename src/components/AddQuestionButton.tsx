@@ -8,7 +8,7 @@ interface IState{
     open: boolean
 } 
 
-class AddQuestionButton extends React.Component<{}, IState>{
+class AddQuestionButton extends React.Component<any, IState>{
     constructor(props: any){
         super(props);
         this.state = {
@@ -41,7 +41,7 @@ class AddQuestionButton extends React.Component<{}, IState>{
                                 </Toolbar>
                             </AppBar>
                             <div className="fullscreen">
-                                <NewQuestion onSubmit={this.onSubmit}/>
+                                <NewQuestion onSubmit={this.onSubmit} suggestions={this.props.suggestions}/>
                             </div>
                         </div>
                     </Dialog>
