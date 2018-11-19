@@ -30,7 +30,9 @@ export default class App extends React.Component<{}, IState> {
             <div className="centreText">
               <LoginInterface onLogin={this.onLogin}/>
             </div>
+            
           </div>
+          
         );
     } else {
       return (
