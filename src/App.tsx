@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import LoginInterface from './components/LoginInterface'
+import AddQuestionButton from './components/AddQuestionButton';
 
 interface IState{
   userInfo: any
@@ -30,7 +31,8 @@ export default class App extends React.Component<{}, IState> {
       return (
         <div>
           Hello, {this.state.userInfo.firstName}
-          <button onClick={this.onLogout}>remove</button>
+          <button onClick={this.onLogout}>Logout</button>
+          <AddQuestionButton />
         </div>
       )
     }
