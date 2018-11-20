@@ -46,8 +46,6 @@ export default class App extends React.Component<{}, IState> {
     } else {
       return (
         <div className="mainContent">
-          Hello, {this.state.userInfo.firstName}
-          <button onClick={this.onLogout}>Logout</button>
           <AddQuestionButton suggestions={this.state.suggestions} />
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 
@@ -70,11 +68,6 @@ export default class App extends React.Component<{}, IState> {
 
   private handleChangeTag = (tag: any) => {
     this.setState({currentTag: tag});
-  }
-
-  private onLogout = () => {
-    localStorage.removeItem("user");
-    this.setState({userInfo: null});
   }
 
   private getTags = () => {
