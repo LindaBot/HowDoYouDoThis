@@ -19,8 +19,9 @@ export default class QuestionTagSearchBar extends React.Component<any, IState>{
     render(){
         return(
             <div>
-                <h3>Search by Tags</h3>
+                
                 <div className="row">
+                <h3 className="col-md-8">Search by Tags</h3>
                 <Select 
                     className="col-md-8"
                     options={this.props.suggestions}
