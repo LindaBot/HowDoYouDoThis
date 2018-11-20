@@ -19,8 +19,9 @@ export default class QuestionItem extends React.Component<any, IState>{
     
     render(){
         const question = this.props.question;
-        if (question.diagramURL == ""){
-            question.diagramURL == ""
+        console.log(question.diagramURL)
+        if (question.diagramURL === ""){
+            question.diagramURL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX1458494.jpg"
         }
         if (this.state.redirect == true){
             return (<Redirect to={'/problem/'+this.props.question.id} />)
@@ -29,7 +30,7 @@ export default class QuestionItem extends React.Component<any, IState>{
                  <Card style={{width: "100%"}}>
                         <CardActionArea onClick={this.goToQuestion}>
                             <CardMedia
-                            image="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bill_Gates_2018.jpg"
+                            image={question.diagramURL}
                             title="Contemplative Reptile"
                             style={{height: "200px"}}/>
                             <CardContent>
