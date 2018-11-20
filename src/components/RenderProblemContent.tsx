@@ -43,6 +43,9 @@ export default class RenderProblemContent extends React.Component<any, IState>{
             )
         } else {
             const solution = this.props.solution;
+            const userJSON = JSON.parse(localStorage.getItem("user") as string);
+            const admin = userJSON.admin
+            const userID = userJSON.id
             return(
                 <Paper className="problemDescription">
                     <div className="problemDescription">
@@ -52,10 +55,23 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                     </div>
                     <div className="alignRight">
                         <Button onClick={this.handleUpVote} disabled={this.state.upVoted}>Upvote</Button>{solution.upvotes}
+                        <br/>
+                    {admin || userID === this.props.solution.authorID ?(<Button onClick={this.handleSolutionDelete} color="secondary">DELETE</Button>):null} 
                     </div>
                 </Paper>
             )
         }
+    }
+
+    private handleSolutionDelete = () =>{
+        const solutionObject = this.props.solution;
+        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/'+solutionObject.id, {
+            method: "DELETE"
+        })
+        .then((res: any) => {
+            alert("DELETED")
+            location.reload();
+        })
     }
 
     private handleUpVote = () =>{

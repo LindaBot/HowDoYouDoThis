@@ -22,6 +22,20 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.questionItem{
+  min-height: 200px;
+  background-color: black;
+}
+
+.row-eq-height{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+
+}
+
 .App-intro {
   font-size: large;
 }

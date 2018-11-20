@@ -30,7 +30,7 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         {
             const questionsRender = this.state.questions.map((question:any, i:number)=>{
                 return(
-                    <div className = "col-md-4">
+                    <div className = "col-md-4 row-eq-height paddingVertical">
                         <QuestionItem question={this.state.questions[i]}/>
                     </div>
                 );
