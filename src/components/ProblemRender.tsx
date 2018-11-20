@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import Chat from '@material-ui/icons/Chat'
 import RenderProblemContent from './RenderProblemContent';
+import NewAnswerButton from './NewAnswerButton'
 
 interface IState {
     solutionObjects: any,
@@ -13,7 +14,8 @@ interface IState {
     currentContent: any
 }
 
-export default class ProblemDetail extends React.Component<any, IState>{
+
+export default class ProblemRender extends React.Component<any, IState>{
     constructor(props: any){
         super(props);
         this.findSolutions
@@ -49,6 +51,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
             return(
                 <div>
                     There are {this.state.solutionObjects.length} solutions
+                    <NewAnswerButton problemID={this.props.problem.id}/>
                     <div className="container paddingTopBottom"> 
                         <div className="row">
                             <div className = "col-md-3">
@@ -79,6 +82,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             )
         }
@@ -89,6 +93,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
     private handleListItemClick = (e:any, i:any) => {
         this.setState({selectedIndex:i})
     }
+
 
     private findSolutions = () =>{
         const questionID = this.props.problem.id;

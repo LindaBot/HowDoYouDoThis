@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {Paper, Button} from '@material-ui/core'
+import * as utf8 from 'utf8'
 
 interface IState {
     num: any,
@@ -18,11 +19,22 @@ export default class RenderProblemContent extends React.Component<any, IState>{
 
     render(){
         const problem = this.props.problem;
+        const url = utf8.encode(window.location.href);
         if (this.props.index===0){
             return(
                 <Paper className="problemDescription">
                     <div className="problemDescription">
-                        <h5 className="alignRight"> Tag: {problem.tag} </h5>
+                    
+                        <h5 className="alignRight"> 
+                            <iframe src={"https://www.facebook.com/plugins/share_button.php?href="
+                                            +url+
+                                            "&layout=button_count&size=small&mobile_iframe=true&appId=254085718606555&width=88&height=20"} 
+                                            width="88" height="20" scrolling="no" 
+                                            frameBorder="0" allowTransparency={true} 
+                                            allow="encrypted-media"/>
+                            <br/>
+                            Tag: {problem.tag} 
+                        </h5>
                         <h2> <b>{problem.title} </b> </h2>
                         <h3> {problem.description} </h3>
                         <img src={problem.diagramURL} className="maxWidth100"/>

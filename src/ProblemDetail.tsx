@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ProblemRender from './components/ProblemRender'
+import { Redirect } from 'react-router-dom'
 
 interface IState {
     problemObject: any
@@ -31,8 +32,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
             this.state.userObject=== null ? 
             
             <div>
-                You are not logged in
-                {this.props.match.params.id} 
+                return <Redirect to='/' />
             </div>
             
             
