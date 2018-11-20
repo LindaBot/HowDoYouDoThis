@@ -113,7 +113,7 @@ export default class NewQuestion extends React.Component<any, IState>{
         console.log(state.tag.value);
         formData.append("tag", state.tag.value);
         if (state.image != ""){
-            formData.append("image", state.image)
+            formData.append("image", state.image[0])
         }
         formData.append("authorID", state.user.id);
         this.props.onSubmit(formData);

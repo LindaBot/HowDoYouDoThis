@@ -27,13 +27,13 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         {
             const questionsRender = questions.map((question:any, i:number)=>{
                 return(
-                    <div className = "col-md-4 row-eq-height paddingVertical">
+                    <div className = "col-md-4 row-eq-height paddingVertical tableCell" style={{height: "400px"}}>
                         <QuestionItem question={question}/>
                     </div>
                 );
             })
             return(
-                <div className="row">
+                <div className="row table">
                     {questionsRender}
                 </div>
             )

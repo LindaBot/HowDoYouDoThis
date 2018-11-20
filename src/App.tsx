@@ -52,7 +52,7 @@ export default class App extends React.Component<{}, IState> {
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 
           : 
-          <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions} onChange={this.handleChangeTag} searchTag={this.getQuestions}clearTags={this.clearTags}/>}
+          <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions} onChange={this.handleChangeTag} searchTag={this.getQuestions} clearTags={this.clearTags}/>}
           {this.state.questions === "" ? "" : <QuestionShowcase tag={this.state.currentTag} questions={this.state.questions}/>}
         </div>
       )

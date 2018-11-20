@@ -23,8 +23,17 @@
   padding-bottom: 10px;
 }
 
+.table{
+  display: table;
+}
+
+.tableCell{
+  display: table-cell;
+}
+
 .questionItem{
   min-height: 200px;
+  max-height: 200px;
   background-color: black;
 }
 
@@ -34,13 +43,4 @@
   display: -ms-flexbox;
   display:         flex;
 
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

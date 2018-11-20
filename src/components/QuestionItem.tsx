@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core"
+import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@material-ui/core"
 import { Redirect } from 'react-router-dom'
 /* 
 import * as InfiniteScroll from 'react-infinite-scroller';
@@ -26,12 +26,12 @@ export default class QuestionItem extends React.Component<any, IState>{
             return (<Redirect to={'/problem/'+this.props.question.id} />)
         } else {
             return(
-                <Card style={{width: "100%"}}>
+                 <Card style={{width: "100%"}}>
                         <CardActionArea onClick={this.goToQuestion}>
                             <CardMedia
-                            image="/static/images/cards/contemplative-reptile.jpg"
+                            image="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bill_Gates_2018.jpg"
                             title="Contemplative Reptile"
-                            />
+                            style={{height: "200px"}}/>
                             <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
                                 {question.title}
@@ -41,16 +41,10 @@ export default class QuestionItem extends React.Component<any, IState>{
                             </Typography>
                             </CardContent>
                         </CardActionArea>
-                        <CardActions>
-                            <Button size="small" color="primary">
-                            Share
-                            </Button>
-                            <Button size="small" color="primary">
-                            Learn More
-                            </Button>
-                        </CardActions>
-                    </Card>
+                    </Card> 
+
             )
+            
             
         }
 
@@ -59,5 +53,5 @@ export default class QuestionItem extends React.Component<any, IState>{
 
     private goToQuestion = () =>{
         this.setState({redirect: true});
-    }
+    } 
 }

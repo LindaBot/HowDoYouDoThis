@@ -20,15 +20,17 @@ export default class QuestionTagSearchBar extends React.Component<any, IState>{
         return(
             <div>
                 <h3>Search by Tags</h3>
-                <div className="autoMargin">
+                <div className="row">
                 <Select 
-                    className="selectBar"
+                    className="col-md-8"
                     options={this.props.suggestions}
                     value={this.state.tag}
                     onChange={this.handleTagChange}
                 />
-                <Button className="selectButton" onClick={this.props.searchTag}>Search</Button>
-                <Button className="selectButton" onClick={this.handleClear}>Clear</Button>
+                <div className="centreAtSmall">
+                <Button className="col-md-2" onClick={this.props.searchTag}>Search</Button>
+                <Button className="col-md-2" onClick={this.handleClear}>Clear</Button>
+                </div>
                 </div>
             </div>
         )
