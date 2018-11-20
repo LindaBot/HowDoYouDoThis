@@ -1,6 +1,7 @@
 import * as React from "react"
-import {AppBar, Toolbar, IconButton, Typography, Slide} from "@material-ui/core"
+import {AppBar, Toolbar, IconButton, Typography, Slide, Tooltip, Button} from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
+import AddIcon from "@material-ui/icons/Add"
 import NewQuestion from './NewQuestion';
 import { Dialog } from 'react-bootstrap/lib/Modal';
 
@@ -19,8 +20,12 @@ class AddQuestionButton extends React.Component<any, IState>{
     render(){
             return(
                 <div>
-                <div>
-                    <button onClick={this.onClick}>Click me</button>
+                <div className="addIcon">
+                    <Tooltip title="Add Questions">
+                        <Button variant="fab" color="secondary" onClick={this.onClick}>
+                        <AddIcon />
+                        </Button>
+                    </Tooltip>
                 </div>
 
                 <Slide direction="up" in={this.state.open}>
