@@ -50,7 +50,6 @@ export default class ProblemRender extends React.Component<any, IState>{
             })
             return(
                 <div>
-                    There are {this.state.solutionObjects.length} solutions
                     <NewAnswerButton problemID={this.props.problem.id}/>
                     <div className="container paddingTopBottom"> 
                         <div className="row">
@@ -87,7 +86,8 @@ export default class ProblemRender extends React.Component<any, IState>{
             )
         }
 
-        return(<div>Loading</div>)
+        // Loading
+        return("")
     }
 
     private handleListItemClick = (e:any, i:any) => {

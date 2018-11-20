@@ -3,6 +3,7 @@ import './App.css';
 import LoginInterface from './components/LoginInterface'
 import AddQuestionButton from './components/AddQuestionButton';
 import QuestionTagSearchBar from './components/QuestionTagSearchBar';
+import QuestionShowcase from './components/QuestionShowcase'
 
 
 interface IState{
@@ -44,7 +45,7 @@ export default class App extends React.Component<{}, IState> {
           <div>No Search is available right now</div> 
           : 
           <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions}/>}
-          
+          <QuestionShowcase/>
         </div>
       )
     }

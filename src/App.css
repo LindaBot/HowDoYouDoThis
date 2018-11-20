@@ -18,6 +18,10 @@
   font-size: 1.5em;
 }
 
+.paddingVertical{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .App-intro {
   font-size: large;
 }
