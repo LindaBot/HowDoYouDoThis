@@ -37,6 +37,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
                             button
                             selected={this.state.selectedIndex === i+1}
                             onClick={event => this.handleListItemClick(event, i+1)}
+                            key={i}
                         >
                             <ListItemIcon>
                             <Chat />

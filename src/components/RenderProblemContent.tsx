@@ -1,17 +1,20 @@
 import * as React from 'react'
-import {Paper} from '@material-ui/core'
+import {Paper, Button} from '@material-ui/core'
 
 interface IState {
-    num: any
+    num: any,
+    upVoted: any
 }
 
 export default class RenderProblemContent extends React.Component<any, IState>{
     constructor(props: any){
         super(props);
         this.state = {
-            num:1
+            num:1,
+            upVoted: false
         }
     }
+
 
     render(){
         const problem = this.props.problem;
@@ -35,8 +38,29 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <h3> {solution.description} </h3>
                         <img src={solution.workingImage} className="maxWidth100"/>
                     </div>
+                    <div className="alignRight">
+                        <Button onClick={this.handleUpVote} disabled={this.state.upVoted}>Upvote</Button>{solution.upvotes}
+                    </div>
                 </Paper>
             )
         }
+    }
+
+    private handleUpVote = () =>{
+        const solutionObject = this.props.solution;
+        solutionObject.upvotes = solutionObject.upvotes+1;
+        let postJSON = JSON.stringify(solutionObject);
+        postJSON = JSON.parse(postJSON);
+        console.log(typeof(postJSON));
+        console.log(postJSON); 
+        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/'+solutionObject.id, {
+            method: "PUT",
+            body: JSON.stringify(postJSON),
+            headers: {"Content-Type": "application/json"}
+        })
+        .then((res: any) =>{
+            console.log(res)
+            this.setState({upVoted: true});
+        })
     }
 }
