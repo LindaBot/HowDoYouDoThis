@@ -5,10 +5,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import Chat from '@material-ui/icons/Chat'
+import RenderProblemContent from './RenderProblemContent';
 
 interface IState {
     solutionObjects: any,
-    selectedIndex: any
+    selectedIndex: any,
+    currentContent: any
 }
 
 export default class ProblemDetail extends React.Component<any, IState>{
@@ -17,7 +19,8 @@ export default class ProblemDetail extends React.Component<any, IState>{
         this.findSolutions
         this.state = {
             solutionObjects: null,
-            selectedIndex: 0
+            selectedIndex: 0,
+            currentContent: 0
         }
     }
 
@@ -27,10 +30,25 @@ export default class ProblemDetail extends React.Component<any, IState>{
 
     render(){
         if (this.state.solutionObjects!==null){
+            const solutionJSONs = this.state.solutionObjects
+            const solutionsRender = solutionJSONs.map((solutionJSON:any, i:number)=>{
+                return(
+                        <ListItem
+                            button
+                            selected={this.state.selectedIndex === i+1}
+                            onClick={event => this.handleListItemClick(event, i+1)}
+                        >
+                            <ListItemIcon>
+                            <Chat />
+                            </ListItemIcon>
+                            <ListItemText primary={"Solution"+ (i+1)} />
+                        </ListItem>
+                );
+            })
             return(
                 <div>
                     There are {this.state.solutionObjects.length} solutions
-                    <div className="container"> 
+                    <div className="container paddingTopBottom"> 
                         <div className="row">
                             <div className = "col-md-3">
                             <List component="nav">
@@ -45,20 +63,18 @@ export default class ProblemDetail extends React.Component<any, IState>{
                                     <ListItemText primary="Inbox" />
                                 </ListItem>
 
-                                <ListItem
-                                    button
-                                    selected={this.state.selectedIndex === 1}
-                                    onClick={event => this.handleListItemClick(event, 1)}
-                                >
-                                    <ListItemIcon>
-                                    <Chat />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Inbox" />
-                                </ListItem>
+                                {solutionsRender}
+
+                                
                             </List>
                             </div>
-                            <div className = "col-md-9">
-                                Hello
+                            {/* MuiList-padding-2 */}
+                            <div className = "col-md-9 ">
+                                <RenderProblemContent 
+                                    index={this.state.selectedIndex} 
+                                    problem={this.props.problem} 
+                                    solution={this.state.solutionObjects[this.state.selectedIndex-1]}
+                                />
                             </div>
                         </div>
                     </div>
