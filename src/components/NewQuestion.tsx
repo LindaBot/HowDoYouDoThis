@@ -2,6 +2,7 @@ import * as React from 'react'
 import {TextField, Button} from '@material-ui/core'
 import CreatableSelect from 'react-select/lib/Creatable'
 import MediaStreamRecorder from 'msr'
+import VoiceIcon from '@material-ui/icons/SettingsVoice'
 
 interface IState{
     title: string,
@@ -62,7 +63,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 
                 <br/>
 
-                <Button onClick={this.inputByVoice}>Touch me</Button>
+                <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>
                 <br/>
 
                 

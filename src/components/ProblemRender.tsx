@@ -1,7 +1,14 @@
 import * as React from 'react'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import QuestionAnswer from '@material-ui/icons/QuestionAnswer'
+import Chat from '@material-ui/icons/Chat'
 
 interface IState {
-    solutionObjects: any
+    solutionObjects: any,
+    selectedIndex: any
 }
 
 export default class ProblemDetail extends React.Component<any, IState>{
@@ -9,7 +16,8 @@ export default class ProblemDetail extends React.Component<any, IState>{
         super(props);
         this.findSolutions
         this.state = {
-            solutionObjects: null
+            solutionObjects: null,
+            selectedIndex: 0
         }
     }
 
@@ -22,10 +30,47 @@ export default class ProblemDetail extends React.Component<any, IState>{
             return(
                 <div>
                     There are {this.state.solutionObjects.length} solutions
+                    <div className="container"> 
+                        <div className="row">
+                            <div className = "col-md-3">
+                            <List component="nav">
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 0}
+                                    onClick={event => this.handleListItemClick(event, 0)}
+                                >
+                                    <ListItemIcon>
+                                    <QuestionAnswer />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Inbox" />
+                                </ListItem>
+
+                                <ListItem
+                                    button
+                                    selected={this.state.selectedIndex === 1}
+                                    onClick={event => this.handleListItemClick(event, 1)}
+                                >
+                                    <ListItemIcon>
+                                    <Chat />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Inbox" />
+                                </ListItem>
+                            </List>
+                            </div>
+                            <div className = "col-md-9">
+                                Hello
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }
-        return(<div>nothinig</div>)
+
+        return(<div>Loading</div>)
+    }
+
+    private handleListItemClick = (e:any, i:any) => {
+        this.setState({selectedIndex:i})
     }
 
     private findSolutions = () =>{
