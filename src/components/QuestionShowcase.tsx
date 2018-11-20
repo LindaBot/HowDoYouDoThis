@@ -19,19 +19,16 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         };
     }
 
-    componentDidMount(){
-        this.getQuestions();
-    }
-
-
     render(){
-        console.log(this.state.questions);
-        if (this.state.questions != null)
+        const questions = this.props.questions;
+        console.log("QUESTIONS");
+        console.log(typeof(questions));
+        if (questions != null || questions != "")
         {
-            const questionsRender = this.state.questions.map((question:any, i:number)=>{
+            const questionsRender = questions.map((question:any, i:number)=>{
                 return(
                     <div className = "col-md-4 row-eq-height paddingVertical">
-                        <QuestionItem question={this.state.questions[i]}/>
+                        <QuestionItem question={question}/>
                     </div>
                 );
             })
@@ -45,19 +42,4 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         }
     }
     
-    private getQuestions = () =>{
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Question', {
-            // body: userData,
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': "*",
-            }
-        })
-        .then(res => res.json()) 
-        .then(json => {
-            console.log(json)
-            json.reverse();
-            this.setState({questions: json});
-        })
-    }
 }

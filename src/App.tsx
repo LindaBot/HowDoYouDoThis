@@ -8,7 +8,9 @@ import QuestionShowcase from './components/QuestionShowcase'
 
 interface IState{
   userInfo: any,
-  suggestions: any
+  suggestions: any,
+  currentTag: any,
+  questions: any
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -17,9 +19,15 @@ export default class App extends React.Component<{}, IState> {
     console.log("CALLED");
     this.state = ({
       userInfo: JSON.parse(localStorage.getItem("user") as string),
-      suggestions: ""
+      suggestions: "",
+      currentTag: "",
+      questions: ""
     })
     this.getTags();
+  }
+
+  componentDidMount(){
+    this.getQuestions();
   }
 
   public render() {
@@ -44,8 +52,8 @@ export default class App extends React.Component<{}, IState> {
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 
           : 
-          <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions}/>}
-          <QuestionShowcase/>
+          <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions} onChange={this.handleChangeTag} searchTag={this.getQuestions}clearTags={this.clearTags}/>}
+          {this.state.questions === "" ? "" : <QuestionShowcase tag={this.state.currentTag} questions={this.state.questions}/>}
         </div>
       )
     }
@@ -54,6 +62,14 @@ export default class App extends React.Component<{}, IState> {
   private onLogin = (userInfo: any) => {
     localStorage.setItem('user', JSON.stringify(userInfo));
     this.setState({userInfo});
+  }
+
+  private clearTags = () =>{
+    this.setState({currentTag: ""}, ()=>{this.getQuestions()});
+  }
+
+  private handleChangeTag = (tag: any) => {
+    this.setState({currentTag: tag});
   }
 
   private onLogout = () => {
@@ -74,4 +90,28 @@ export default class App extends React.Component<{}, IState> {
           this.setState({suggestions: tags});
       })
   }
+
+  public getQuestions = () =>{
+    let url;
+    if (this.state.currentTag === ""){
+        url = "https://howdoidothisapixlin928.azurewebsites.net/api/Question"
+    } else {
+        console.log("TAG")
+        console.log(this.state.currentTag);
+        url = ("https://howdoidothisapixlin928.azurewebsites.net/api/Question/tag/" + this.state.currentTag.value)
+    }
+        fetch(url, {
+            // body: userData,
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': "*",
+            }
+        })
+        .then(res => res.json()) 
+        .then(json => {
+            console.log(json)
+            json.reverse();
+            this.setState({questions: json});
+        })
+}
 }

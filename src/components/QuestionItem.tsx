@@ -26,7 +26,7 @@ export default class QuestionItem extends React.Component<any, IState>{
             return (<Redirect to={'/problem/'+this.props.question.id} />)
         } else {
             return(
-                <Card>
+                <Card style={{width: "100%"}}>
                         <CardActionArea onClick={this.goToQuestion}>
                             <CardMedia
                             image="/static/images/cards/contemplative-reptile.jpg"
@@ -37,8 +37,7 @@ export default class QuestionItem extends React.Component<any, IState>{
                                 {question.title}
                             </Typography>
                             <Typography component="p">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                across all continents except Antarctica
+                                {question.description.length < 20 ? (question.description) : (question.description.substring(0,50)+"...")}
                             </Typography>
                             </CardContent>
                         </CardActionArea>

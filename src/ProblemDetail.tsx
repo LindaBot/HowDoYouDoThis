@@ -35,8 +35,6 @@ export default class ProblemDetail extends React.Component<any, IState>{
             <div>
                 return <Redirect to='/' />
             </div>
-            
-            
              
             : 
             

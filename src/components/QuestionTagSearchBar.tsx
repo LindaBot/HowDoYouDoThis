@@ -27,7 +27,8 @@ export default class QuestionTagSearchBar extends React.Component<any, IState>{
                     value={this.state.tag}
                     onChange={this.handleTagChange}
                 />
-                <Button className="selectButton">Search</Button>
+                <Button className="selectButton" onClick={this.props.searchTag}>Search</Button>
+                <Button className="selectButton" onClick={this.handleClear}>Clear</Button>
                 </div>
             </div>
         )
@@ -35,6 +36,12 @@ export default class QuestionTagSearchBar extends React.Component<any, IState>{
 
      private handleTagChange = (e:any) => {
         this.setState({tag: e});
+        this.props.onChange(e)
+    }
+
+    private handleClear = () =>{
+        this.setState({tag: ""});
+        this.props.clearTags()
     }
  
 }
