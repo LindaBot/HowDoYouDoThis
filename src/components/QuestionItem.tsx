@@ -71,6 +71,7 @@ export default class QuestionItem extends React.Component<any, IState>{
         .then(json => {
             //console.log(json);
             this.setState({redirect: false});
+            location.reload();
         })
         .catch(err => {
             alert("Internal server error, please try again later");

@@ -78,8 +78,8 @@ export default class RenderProblemContent extends React.Component<any, IState>{
     }
 
     private handleSolutionDelete = () =>{
-        const solutionObject = this.props.solution;
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/'+solutionObject.id, {
+        const solutionObject = this.props.solution[this.props.index-1];
+        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/' + solutionObject.id, {
             method: "DELETE"
         })
         .then((res: any) => {
