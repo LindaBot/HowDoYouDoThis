@@ -25,7 +25,7 @@ export default class NewQuestion extends React.Component<any, IState>{
             authorID: -1,
             user: JSON.parse(localStorage.getItem("user") as string),
             suggestions: [
-                { label: "Afghanistan" },
+                { label: "" },
               ].map(suggestion => ({
                 value: suggestion.label,
                 label: suggestion.label

@@ -31,8 +31,13 @@ export default class LoginInterface extends React.Component<any, IState>{
 
     public render(){
         return(
+
+
+
             <Paper className="modal-dialog" style={{ width: "500px"}}>
-            <h2>Please sign in or login</h2>
+
+            
+            <h2>Please login or register</h2>
             <AppBar position="static" color="default">
             <Tabs
                 value={this.state.value}
@@ -45,6 +50,7 @@ export default class LoginInterface extends React.Component<any, IState>{
                 <Tab label="Register" />
             </Tabs>
             </AppBar>
+
             <SwipeableViews
                 index={this.state.value}
                 onChangeIndex={this.handleChange}
