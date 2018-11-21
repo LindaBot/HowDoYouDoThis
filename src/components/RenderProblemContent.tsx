@@ -43,8 +43,8 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                             <br/>
                             Tag: {problem.tag} 
                         </h5>
-                        <h3> <b>{problem.title} </b> </h3> <br/>
-                        <h4> {problem.description} </h4>
+                        <h3 className="breakWord"> <b>{problem.title} </b> </h3> <br/>
+                        <h4 className="breakWord"> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
                         <p className="alignRight">Question submitted by: {this.state.questionAuthor}</p>
                     </div>
