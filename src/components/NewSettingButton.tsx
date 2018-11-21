@@ -8,7 +8,7 @@ interface IState{
     open: any
 }
 
-export default class NewAnswerButton extends React.Component<any, IState>{
+export default class NewSettingButton extends React.Component<any, IState>{
     constructor(props: any){
         super(props);
         this.state = ({
@@ -19,9 +19,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
     render(){
         return(
             <div>
-            <div className="addIcon">
-                <button onClick={this.onClickOpen}>click me </button>
-            </div>
+            <a onClick={this.onClickOpen} className="navButton">Settings </a>
 
             <Slide direction="up" in={this.state.open}>
             <Dialog>
