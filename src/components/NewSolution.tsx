@@ -86,7 +86,7 @@ export default class NewSolution extends React.Component<any, IState>{
         formData.append("answer", state.answer);
         formData.append("description", state.description);
         if (state.image != ""){
-            console.log("NO empty")
+            //console.log("NO empty")
             formData.append("workingImage", state.image[0])
         }
         formData.append("authorID", state.user.id);
@@ -124,13 +124,13 @@ export default class NewSolution extends React.Component<any, IState>{
             },
             method: 'POST'
         }).then((response) => {
-            // console.log(response.text())
+            // //console.log(response.text())
             return response.text()
         }).then((response) => {
-            console.log(response)
+            //console.log(response)
             accessToken = response
         }).catch((error) => {
-            console.log("Error", error)
+            //console.log("Error", error)
         });
            // posting audio
            fetch('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US', {
@@ -148,7 +148,7 @@ export default class NewSolution extends React.Component<any, IState>{
             const text = (res.DisplayText as string).slice(0, -1)
             this.setState({description: text});
         }).catch((error) => {
-            console.log("Error", error)
+            //console.log("Error", error)
         });
     }
 }

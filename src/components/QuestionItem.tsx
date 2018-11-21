@@ -20,7 +20,7 @@ export default class QuestionItem extends React.Component<any, IState>{
     render(){
         const question = this.props.question;
         const user = JSON.parse(localStorage.getItem("user") as string);
-        console.log(question.diagramURL)
+        //console.log(question.diagramURL)
         if (question.diagramURL === ""){
             question.diagramURL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX1458494.jpg"
         }
@@ -69,7 +69,7 @@ export default class QuestionItem extends React.Component<any, IState>{
         })
         .then(res => res.json())
         .then(json => {
-            console.log(json);
+            //console.log(json);
             this.setState({redirect: false});
         })
         .catch(err => {

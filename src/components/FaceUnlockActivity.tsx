@@ -74,7 +74,7 @@ export default class FaceUnlockActivity extends React.Component<any, IState> {
                 alert(response.statusText)
             } else {
                 response.json().then((json: any) => {
-                    console.log(json.predictions[0].probability)
+                    //console.log(json.predictions[0].probability)
                     if (json.predictions[0].probability > 0.75){
                         this.setState({authenticated: true});
                         this.props.authenticated();

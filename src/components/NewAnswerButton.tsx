@@ -65,7 +65,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
     }
 
     private onSubmit = (formData: FormData) => {
-        console.log(formData);
+        //console.log(formData);
         formData.append("questionID", this.props.problemID);
         this.setState({open: false});
         fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution', {
@@ -77,7 +77,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
             }
         })
         .then((response: any) => {
-            console.log(response)
+            //console.log(response)
             if (response.ok){
                 alert("Solution made");
                 location.reload();

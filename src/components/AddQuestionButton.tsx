@@ -65,7 +65,7 @@ class AddQuestionButton extends React.Component<any, IState>{
     }
 
     private onSubmit = (formData: FormData) => {
-        console.log(formData);
+        //console.log(formData);
         this.setState({open: false});
         fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Question', {
             // body: userData,
@@ -76,7 +76,7 @@ class AddQuestionButton extends React.Component<any, IState>{
             }
         })
         .then((response: any) => {
-            console.log(response)
+            //console.log(response)
             if (response.ok){
                 alert("Question made");
                 location.reload();

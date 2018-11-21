@@ -39,7 +39,6 @@ export default class NewQuestion extends React.Component<any, IState>{
                 <h2> New Question </h2>
                 <TextField
                     required
-                    id="outlined-required"
                     label="Question title"
                     margin="normal"
                     variant="outlined"
@@ -48,7 +47,6 @@ export default class NewQuestion extends React.Component<any, IState>{
                     onChange={ (e) => this.onChangeInput(e, "title")}
                 /> <br/>
                 <TextField
-                    id="outlined-multiline-flexible"
                     required
                     label="Question description"
                     multiline
@@ -106,7 +104,7 @@ export default class NewQuestion extends React.Component<any, IState>{
 
     private onSubmit = () => {
         const state = this.state;
-        console.log();
+        //console.log();
         if (state.title === "" || state.description === "" || state.tag === ""){
             alert("Please fill in the form");
             return;
@@ -114,7 +112,7 @@ export default class NewQuestion extends React.Component<any, IState>{
         const formData = new FormData();
         formData.append("title", state.title);
         formData.append("description", state.description);
-        console.log(state.tag.value);
+        //console.log(state.tag.value);
         formData.append("tag", state.tag.value);
         if (state.image != ""){
             formData.append("image", state.image[0])
@@ -154,13 +152,13 @@ export default class NewQuestion extends React.Component<any, IState>{
             },
             method: 'POST'
         }).then((response) => {
-            // console.log(response.text())
+            // //console.log(response.text())
             return response.text()
         }).then((response) => {
-            console.log(response)
+            //console.log(response)
             accessToken = response
         }).catch((error) => {
-            console.log("Error", error)
+            //console.log("Error", error)
         });
            // posting audio
            fetch('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US', {
@@ -178,7 +176,7 @@ export default class NewQuestion extends React.Component<any, IState>{
             const text = (res.DisplayText as string).slice(0, -1)
             this.setState({description: text});
         }).catch((error) => {
-            console.log("Error", error)
+            //console.log("Error", error)
         });
     }
 }

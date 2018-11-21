@@ -18,7 +18,7 @@ interface IState{
 export default class App extends React.Component<{}, IState> {
   constructor(props: any){
     super(props)
-    console.log("CALLED");
+    //console.log("CALLED");
     this.state = ({
       userInfo: JSON.parse(localStorage.getItem("user") as string),
       suggestions: "",
@@ -99,8 +99,8 @@ export default class App extends React.Component<{}, IState> {
     if (this.state.currentTag === ""){
         url = "https://howdoidothisapixlin928.azurewebsites.net/api/Question"
     } else {
-        console.log("TAG")
-        console.log(this.state.currentTag);
+        //console.log("TAG")
+        //console.log(this.state.currentTag);
         url = ("https://howdoidothisapixlin928.azurewebsites.net/api/Question/tag/" + this.state.currentTag.value)
     }
         fetch(url, {
@@ -112,7 +112,7 @@ export default class App extends React.Component<{}, IState> {
         })
         .then(res => res.json()) 
         .then(json => {
-            console.log(json)
+            //console.log(json)
             json.reverse();
             this.setState({questions: json});
         })

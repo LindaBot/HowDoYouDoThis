@@ -108,18 +108,18 @@ export default class ProblemRender extends React.Component<any, IState>{
             solutions=[];
             for (var i = 0; i < count; i++){
                 if(res[i].questionID === questionID){
-                    console.log("Found");
+                    //console.log("Found");
                     solutions.push(res[i]);
                 }
             }
-            console.log("Solutions:");
-            console.log(solutions);
+            //console.log("Solutions:");
+            //console.log(solutions);
             this.setState({
                 solutionObjects: solutions
             })
         })
         .catch(() => {
-            console.log("OOPS");
+            //console.log("OOPS");
         })
     }
 }

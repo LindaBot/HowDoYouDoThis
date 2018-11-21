@@ -57,10 +57,10 @@ export default class NewSettingButton extends React.Component<any, IState>{
     }
 
     private onSubmit = (newUserData: any) => {
-        console.log(newUserData);
+        //console.log(newUserData);
         this.setState({open: false});
         const url = 'https://howdoidothisapixlin928.azurewebsites.net/api/User/'+newUserData.id;
-        console.log(url);
+        //console.log(url);
         fetch(url, {
             body: JSON.stringify(newUserData),
             method: 'PUT',
@@ -70,7 +70,7 @@ export default class NewSettingButton extends React.Component<any, IState>{
             }
         })
         .then((response: any) => {
-            console.log(response)
+            //console.log(response)
             if (response.ok){
                 alert("Information updated");
                 localStorage.setItem('user', JSON.stringify(newUserData));
@@ -80,7 +80,7 @@ export default class NewSettingButton extends React.Component<any, IState>{
             }
         })
         .catch(err => {
-            console.log("Server error");
+            //console.log("Server error");
         })
     }
 }

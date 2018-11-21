@@ -87,18 +87,18 @@ export default class LoginInterface extends React.Component<any, IState>{
         })
         .then(response => response.json())
         .then((response: JSON) => {
-            console.log(response);
+            //console.log(response);
             var count = Object.keys(response).length;
             for(var i = 0; i < count; i++){
                 let userObject = response[i];
                 this.setState({userObject: userObject});
                 var password = CryptoJS.AES.decrypt(userObject.password, 'secret');
                 password = password.toString(CryptoJS.enc.Utf8);
-                console.log("User and password pair")
-                console.log(userpass);
-                console.log(password);
+                //console.log("User and password pair")
+                //console.log(userpass);
+                //console.log(password);
                 if (userpass == password && username === userObject.username){
-                    console.log(userObject.admin)
+                    //console.log(userObject.admin)
                     if (userObject.admin){
                         this.setState({modal: true});
                         return;
@@ -128,7 +128,7 @@ export default class LoginInterface extends React.Component<any, IState>{
             }
         })
         .then((response: any) => {
-            console.log(response)
+            //console.log(response)
             if (response.ok){
                 alert("User created, please login");
                 location.reload();

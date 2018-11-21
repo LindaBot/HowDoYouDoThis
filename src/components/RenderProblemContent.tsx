@@ -38,7 +38,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                                             +url+
                                             "&layout=button_count&size=small&mobile_iframe=true&appId=254085718606555&width=88&height=20"} 
                                             width="88" height="20" scrolling="no" 
-                                            frameBorder="0" allowTransparency={true} 
+                                            frameBorder="0"
                                             allow="encrypted-media"/>
                             <br/>
                             Tag: {problem.tag} 
@@ -88,22 +88,22 @@ export default class RenderProblemContent extends React.Component<any, IState>{
         solutionObject.upvotes = solutionObject.upvotes+1;
         let postJSON = JSON.stringify(solutionObject);
         postJSON = JSON.parse(postJSON);
-        console.log(typeof(postJSON));
-        console.log(postJSON); 
+        //console.log(typeof(postJSON));
+        //console.log(postJSON); 
         fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/'+solutionObject.id, {
             method: "PUT",
             body: JSON.stringify(postJSON),
             headers: {"Content-Type": "application/json"}
         })
         .then((res: any) =>{
-            console.log(res)
+            //console.log(res)
             this.setState({upVoted: true});
         })
     }
 
     private getQuestionAuthor = () =>{
         const url = "https://howdoidothisapixlin928.azurewebsites.net/api/User/" + this.props.problem.authorID;
-        console.log(url);
+        //console.log(url);
         fetch(url, {
             method: "GET"
         })

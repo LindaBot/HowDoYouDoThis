@@ -14,7 +14,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
             problemObject: "Loading",
             userObject: "Loading"
         }
-        console.log("MOUNTING");
+        //console.log("MOUNTING");
         
     }
 
@@ -24,7 +24,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
 
     render(){
         
-        console.log(this.state)
+        //console.log(this.state)
         return(
             this.state.problemObject==="Loading" && this.state.problemObject==="Loading" ?
             // Loading
@@ -61,21 +61,21 @@ export default class ProblemDetail extends React.Component<any, IState>{
         } else {
             this.setState({userObject: userObject});
         }
-        console.log(userObject);
+        //console.log(userObject);
 
         fetch("https://howdoidothisapixlin928.azurewebsites.net/api/Question/" + this.props.match.params.id, {
           method: 'GET'
         })
         .then(res => res.json())
         .then(questionJSON =>{
-            console.log(questionJSON);
+            //console.log(questionJSON);
             this.setState({
                 problemObject: questionJSON
             })
         })
         .catch(e => {
             // Problem does not exist
-            console.log("Problem does not exist");
+            //console.log("Problem does not exist");
             this.setState({
                 problemObject: null
             })

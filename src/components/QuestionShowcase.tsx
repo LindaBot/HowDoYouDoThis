@@ -21,8 +21,8 @@ export default class QuestionShowcase extends React.Component<any, IState>{
 
     render(){
         const questions = this.props.questions;
-        console.log("QUESTIONS");
-        console.log(typeof(questions));
+        //console.log("QUESTIONS");
+        //console.log(typeof(questions));
         if (questions != null || questions != "")
         {
             const questionsRender = questions.map((question:any, i:number)=>{
