@@ -35,11 +35,11 @@ export default class QuestionItem extends React.Component<any, IState>{
                             title="Contemplative Reptile"
                             style={{height: "200px"}}/>
                             <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {question.title}
-                            </Typography>
+                            <h4>
+                                {question.title.length < 20 ? (question.title) : (question.title.substring(0,25)+"...")}
+                                </h4>
                             <Typography component="p">
-                                {question.description.length < 20 ? (question.description) : (question.description.substring(0,50)+"...")}
+                                {question.description.length < 20 ? (question.description) : (question.description.substring(0,35)+"...")}
                             </Typography>
                             </CardContent>
                         </CardActionArea>

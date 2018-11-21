@@ -54,7 +54,10 @@ export default class NewSolution extends React.Component<any, IState>{
                 <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>
                 <br/><br/>
 
-                <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/> 
+                <p>
+                    Optional photo upload
+                    <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>
+                </p> 
                 
                 <br/>
                 <div style={{width: "100%", textAlign:"center"}}>

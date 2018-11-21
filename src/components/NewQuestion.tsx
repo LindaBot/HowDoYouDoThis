@@ -71,11 +71,15 @@ export default class NewQuestion extends React.Component<any, IState>{
                 <CreatableSelect 
                     className="selectInput"
                     options={this.props.suggestions}
-                    placeholder="Search a Tag"
+                    placeholder="Search a Tag*"
                     value={this.state.tag}
                     onChange={ (e) => this.onChangeInput(e, "tag")}
                 /> <br/>
-                <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/> 
+                
+                <p>
+                    Optional photo upload
+                    <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>
+                </p> 
                 
                 <br/>
                 <div style={{width: "100%", textAlign:"center"}}>

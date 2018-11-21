@@ -35,8 +35,8 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                             <br/>
                             Tag: {problem.tag} 
                         </h5>
-                        <h2> <b>{problem.title} </b> </h2>
-                        <h3> {problem.description} </h3>
+                        <h3> <b>{problem.title} </b> </h3> <br/>
+                        <h4> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
                     </div>
                 </Paper>

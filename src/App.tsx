@@ -45,7 +45,7 @@ export default class App extends React.Component<{}, IState> {
         );
     } else {
       return (
-        <div className="mainContent">
+        <div className="container">
           <AddQuestionButton suggestions={this.state.suggestions} />
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 
