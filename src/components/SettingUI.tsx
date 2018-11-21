@@ -39,7 +39,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
             <div className="centre80">
                 <TextField
                     disabled
-                    id="outlined-required"
                     label="ID"
                     margin="normal"
                     variant="outlined"
@@ -48,7 +47,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                 /> <br/>
 
                 <TextField
-                    id="outlined-multiline-flexible"
                     required
                     label="Username"
                     fullWidth
@@ -59,7 +57,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                 /> <br/>
                 <TextField
                     required
-                    id="outlined-required"
                     label="First Name"
                     margin="normal"
                     variant="outlined"
@@ -68,7 +65,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                     onChange={ (e) => this.onChangeInput(e, "firstName")}
                 /> <br/>
                 <TextField
-                    id="outlined-multiline-flexible"
                     required
                     label="Last Name"
                     fullWidth
@@ -79,7 +75,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                 /> 
                 
                 <TextField
-                    id="outlined-multiline-flexible"
                     required
                     label="Date created"
                     fullWidth
@@ -92,7 +87,6 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                 <div>Optional</div>
 
                 <TextField
-                    id="outlined-multiline-flexible"
                     label="New Password"
                     type="password"
                     fullWidth

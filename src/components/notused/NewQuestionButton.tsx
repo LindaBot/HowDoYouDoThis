@@ -1,9 +1,9 @@
-import * as React from 'react'
+/* import * as React from 'react'
 import {Tooltip, Button,  }from '@material-ui/core'
 import {AppBar, Toolbar, IconButton, Typography, Slide} from "@material-ui/core"
+
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from "@material-ui/icons/Close"
-import NewQuestion from './NewQuestion';
 import { Dialog } from 'react-bootstrap/lib/Modal';
 
 interface IState{
@@ -88,3 +88,4 @@ export default class NewQuestionButton extends React.Component<any, IState>{
     }
 }
 
+ */

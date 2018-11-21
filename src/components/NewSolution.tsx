@@ -27,7 +27,6 @@ export default class NewSolution extends React.Component<any, IState>{
                 <h2> New Solution </h2>
                 <TextField
                     required
-                    id="outlined-required"
                     label="Answer"
                     margin="normal"
                     variant="outlined"
@@ -36,7 +35,6 @@ export default class NewSolution extends React.Component<any, IState>{
                     onChange={ (e) => this.onChangeInput(e, "title")}
                 /> <br/>
                 <TextField
-                    id="outlined-multiline-flexible"
                     required
                     label="Answer explanation"
                     multiline

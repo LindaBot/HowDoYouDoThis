@@ -27,7 +27,7 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         {
             const questionsRender = questions.map((question:any, i:number)=>{
                 return(
-                    <div className = "col-md-4 row-eq-height paddingVertical tableCell">
+                    <div className = "col-md-4 row-eq-height paddingVertical tableCell" key={i}>
                         <QuestionItem question={question}/>
                     </div>
                 );
