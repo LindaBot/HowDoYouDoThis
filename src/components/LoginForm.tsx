@@ -19,7 +19,7 @@ export default class UserPassBut extends React.Component<any, IState>{
         return(
             <div>
                 <TextField
-                    id="outlined-name"
+                    id="username"
                     label="Username"
                     value={this.state.username}
                     onChange={(e) => {this.handleChangeValue(e, "username")}}
@@ -30,7 +30,7 @@ export default class UserPassBut extends React.Component<any, IState>{
                 <br/>
 
                 <TextField
-                    id="outlined-name"
+                    id="password"
                     label="Password"
                     type="password"
                     value={this.state.password}

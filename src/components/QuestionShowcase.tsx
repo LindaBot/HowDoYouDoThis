@@ -27,7 +27,7 @@ export default class QuestionShowcase extends React.Component<any, IState>{
         {
             const questionsRender = questions.map((question:any, i:number)=>{
                 return(
-                    <div className = "col-md-4 row-eq-height paddingVertical tableCell" style={{height: "400px"}}>
+                    <div className = "col-md-4 row-eq-height paddingVertical tableCell">
                         <QuestionItem question={question}/>
                     </div>
                 );
@@ -38,7 +38,7 @@ export default class QuestionShowcase extends React.Component<any, IState>{
                 </div>
             )
         } else {
-            return("")
+            return
         }
     }
     

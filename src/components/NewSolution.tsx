@@ -24,7 +24,7 @@ export default class NewSolution extends React.Component<any, IState>{
     render(){
         return(
             <div className="centre80">
-                <h2> New Question </h2>
+                <h2> New Solution </h2>
                 <TextField
                     required
                     id="outlined-required"

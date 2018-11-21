@@ -1,5 +1,5 @@
 import * as React from "react"
-import {Card, CardActionArea, CardContent, CardMedia, Typography} from "@material-ui/core"
+import {Card, CardActionArea, CardContent, CardMedia, Typography, CardActions, Button} from "@material-ui/core"
 import { Redirect } from 'react-router-dom'
 /* 
 import * as InfiniteScroll from 'react-infinite-scroller';
@@ -19,6 +19,7 @@ export default class QuestionItem extends React.Component<any, IState>{
     
     render(){
         const question = this.props.question;
+        const user = JSON.parse(localStorage.getItem("user") as string);
         console.log(question.diagramURL)
         if (question.diagramURL === ""){
             question.diagramURL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX1458494.jpg"
@@ -42,6 +43,10 @@ export default class QuestionItem extends React.Component<any, IState>{
                             </Typography>
                             </CardContent>
                         </CardActionArea>
+                        <CardActions>
+                            <Button onClick={this.goToQuestion}> View </Button>
+                            {user.admin===true || user.id === question.authorID? <Button onClick={this.deleteQuestion} color="secondary"> Delete </Button> : ""}
+                        </CardActions>
                     </Card> 
 
             )
@@ -54,5 +59,21 @@ export default class QuestionItem extends React.Component<any, IState>{
 
     private goToQuestion = () =>{
         this.setState({redirect: true});
-    } 
+    }
+    
+    private deleteQuestion = () =>{
+        const question = this.props.question;
+        const url = ("https://howdoidothisapixlin928.azurewebsites.net/api/Question/" + question.id)
+        fetch(url, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(json => {
+            console.log(json);
+            this.setState({redirect: false});
+        })
+        .catch(err => {
+            alert("Internal server error, please try again later");
+        })
+    }
 }

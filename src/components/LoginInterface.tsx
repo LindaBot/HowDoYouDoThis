@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {AppBar, Tabs, Tab, Typography} from "@material-ui/core"
+import {AppBar, Tabs, Tab, Typography, Paper} from "@material-ui/core"
 import SwipeableViews from 'react-swipeable-views';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -31,7 +31,8 @@ export default class LoginInterface extends React.Component<any, IState>{
 
     public render(){
         return(
-            <div className="centreElement" style={{ width: "500px"}}>
+            <Paper className="modal-dialog" style={{ width: "500px"}}>
+            <h2>Please sign in or login</h2>
             <AppBar position="static" color="default">
             <Tabs
                 value={this.state.value}
@@ -49,7 +50,9 @@ export default class LoginInterface extends React.Component<any, IState>{
                 onChangeIndex={this.handleChange}
                 >
                 <Typography component="div" style={{ padding: 8 * 3 }}>
+                <div className="center">
                     <LoginForm onSubmit={this.loginClick} hintText={"Login"}/>
+                    </div>
                 </Typography>
 
                 <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -60,7 +63,7 @@ export default class LoginInterface extends React.Component<any, IState>{
 
             {(this.state.modal) ? (<FaceUnlockActivity authenticated={this.authenticated}/>) : ""}
 
-        </div>
+        </Paper>
         )
     }
 

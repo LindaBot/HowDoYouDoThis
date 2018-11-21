@@ -28,7 +28,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
         return(
             this.state.problemObject==="Loading" && this.state.problemObject==="Loading" ?
             // Loading
-            <div>""</div>
+            <div/>
             :
             this.state.userObject=== null ? 
             
