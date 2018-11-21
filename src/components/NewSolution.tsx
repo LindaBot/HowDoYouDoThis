@@ -57,9 +57,8 @@ export default class NewSolution extends React.Component<any, IState>{
                     <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>
                 </p> 
                 
-                <br/>
                 <div style={{width: "100%", textAlign:"center"}}>
-                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit}>Upload</Button>
+                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit}>Submit Solution</Button>
                 </div>
             </div>
         )

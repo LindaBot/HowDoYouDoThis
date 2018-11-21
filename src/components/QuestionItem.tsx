@@ -32,7 +32,7 @@ export default class QuestionItem extends React.Component<any, IState>{
                         <CardActionArea onClick={this.goToQuestion}>
                             <CardMedia
                             image={question.diagramURL}
-                            title="Contemplative Reptile"
+                            title="Description image"
                             style={{height: "200px"}}/>
                             <CardContent>
                             <h4>

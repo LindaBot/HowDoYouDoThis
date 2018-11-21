@@ -74,6 +74,11 @@ html{
     display: table!
 }
 
+input[type=file]{
+    padding-top: 20px;
+    display: inline
+}
+
 .row{
     margin-left: 0;
     margin-right: 0;
