@@ -1,12 +1,13 @@
 import * as React from 'react'
 import {Paper, Button} from '@material-ui/core'
 import * as utf8 from 'utf8'
+import NewQuestionEditButton from './NewQuestionEditButton';
 
 interface IState {
     num: any,
     upVoted: any,
     questionAuthor: any,
-    users: any
+    user: any
 }
 
 export default class RenderProblemContent extends React.Component<any, IState>{
@@ -16,18 +17,21 @@ export default class RenderProblemContent extends React.Component<any, IState>{
             num:1,
             upVoted: false,
             questionAuthor: "",
-            users: ""
+            user: ""
         }
     }
 
     componentDidMount(){
         this.getQuestionAuthor();
+        this.setState({user: JSON.parse(localStorage.getItem("user") as string)})
     }
 
 
     render(){
         const problem = this.props.problem;
         const url = utf8.encode(window.location.href);
+        const admin = this.state.user.admin;
+        const userID = this.state.user.id;
         if (this.props.index===0){
             return(
                 <Paper className="problemDescription">
@@ -47,6 +51,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <h4 className="breakWord"> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
                         <p className="alignRight">Question submitted by: {this.state.questionAuthor}</p>
+                        {admin || userID === this.props.problem.authorID ?(<NewQuestionEditButton problem={this.props.problem}/>):null}
                     </div>
                 </Paper>
             )
