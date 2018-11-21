@@ -69,7 +69,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <img src={solution.workingImage} className="maxWidth100"/>
                     </div>
                     <div>
-                        <Button onClick={this.handleUpVote} disabled={this.state.upVoted}>Upvote</Button>{solution.upvotes}
+                        <Button onClick={this.handleUpVote} disabled={this.state.upVoted} variant="contained">Upvote</Button>  &#160;&#160;&#160;  {solution.upvotes}
                         <br/>
                     {admin || userID === this.props.solution.authorID ?(<div className="alignRight"><Button onClick={this.handleSolutionDelete} variant="contained" color="secondary">DELETE</Button></div>):null} 
                     </div>

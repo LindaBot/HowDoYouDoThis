@@ -80,7 +80,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 </p> 
                 
                 <div style={{width: "100%", textAlign:"center"}}>
-                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit}>Submit Question</Button>
+                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit} variant="contained">Submit Question</Button>
                 </div>
             </div>
         )

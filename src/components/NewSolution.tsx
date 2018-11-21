@@ -58,7 +58,7 @@ export default class NewSolution extends React.Component<any, IState>{
                 </p> 
                 
                 <div style={{width: "100%", textAlign:"center"}}>
-                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit}>Submit Solution</Button>
+                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit} variant="contained">Submit Solution</Button>
                 </div>
             </div>
         )

@@ -99,7 +99,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                 <br/>
 
                 <div style={{width: "100%", textAlign:"center"}}>
-                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit}>Save</Button>
+                    <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} variant="contained" onClick={this.onSubmit}>Save</Button>
                 </div>
             </div>
         )
