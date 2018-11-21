@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {AppBar, Toolbar, IconButton, Typography, Slide} from "@material-ui/core"
+import {AppBar, Toolbar, IconButton, Typography, Slide, Button} from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 import SettingUI from './SettingUI';
 import { Dialog } from 'react-bootstrap/lib/Modal';
@@ -18,8 +18,8 @@ export default class NewSettingButton extends React.Component<any, IState>{
 
     render(){
         return(
-            <div>
-            <a onClick={this.onClickOpen} className="navButton">Settings </a>
+            <div style={{display:"inline-block"}}>
+            <Button onClick={this.onClickOpen} className="navButton">Settings </Button>
 
             <Slide direction="up" in={this.state.open}>
             <Dialog>

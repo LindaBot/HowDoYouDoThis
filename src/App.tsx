@@ -5,6 +5,7 @@ import AddQuestionButton from './components/AddQuestionButton';
 import QuestionTagSearchBar from './components/QuestionTagSearchBar';
 import QuestionShowcase from './components/QuestionShowcase'
 import NewSettingButton from './components/NewSettingButton'
+import {Paper} from '@material-ui/core'
 
 
 interface IState{
@@ -47,7 +48,14 @@ export default class App extends React.Component<{}, IState> {
     } else {
       return (
         <div className="container">
-          <NewSettingButton/>
+          <Paper style={{minHeight: "50px", height: "100%", backgroundColor:"black"}}>
+            <div style={{height: "100% !important", width:"100% !important", backgroundColor:"white"}} className="alignRight">
+              Hello {this.state.userInfo.firstName}, Welcome to HowDoYouDoThis
+              <NewSettingButton className="alignRight"/>
+            </div>
+          
+          </Paper>
+          
           <AddQuestionButton suggestions={this.state.suggestions} />
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 

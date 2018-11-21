@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import NewSettingButton from './NewSettingButton'
 
 export default class Header extends React.Component<{}>{
 
@@ -13,25 +12,17 @@ export default class Header extends React.Component<{}>{
             <Navbar collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <Link to="/">dankNotDank</Link>
+                        <Link to="/">HowDoYouDoThis</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-
-                    <NavItem eventKey={2} href="#">
-                        Link
-                    </NavItem>
                     
                     </Nav>
                     <Nav pullRight>
 
-                        <NavItem eventKey={2}>
-                            <NewSettingButton/>
-                        </NavItem>
-
-                        <NavItem eventKey={2} onClick={this.logout}>
+                        <NavItem onClick={this.logout}>
                             Logout
                         </NavItem>
                     </Nav>
