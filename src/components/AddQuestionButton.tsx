@@ -21,7 +21,7 @@ class AddQuestionButton extends React.Component<any, IState>{
             return(
                 <div>
                 <div className="addIcon">
-                    <Tooltip title="Add Questions">
+                    <Tooltip title="Add Question">
                         <Button variant="fab" color="secondary" onClick={this.onClick}>
                         <AddIcon />
                         </Button>

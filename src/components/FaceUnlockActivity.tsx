@@ -24,14 +24,18 @@ export default class FaceUnlockActivity extends React.Component<any, IState> {
         if (!this.state.authenticated){
             return(
                 <Modal open={!this.state.authenticated} onClose={this.authenticate} closeOnOverlayClick={false} showCloseIcon={false} center={true}>
-                    <h2>Hello Admin, Please verify with your face</h2>
-                    <Webcam
-                        audio={false}
-                        screenshotFormat="image/jpeg"
-                        ref={this.state.refCamera}
-                    />
-                    <div className="row nav-row">
-                        <div className="btn btn-primary bottom-button" onClick={this.authenticate}>Login</div>
+                    <div style={{textAlign: "center"}}>
+                        <h3>Hello Admin, Please complete 2FA</h3>
+                        <Webcam
+                            audio={false}
+                            screenshotFormat="image/jpeg"
+                            ref={this.state.refCamera}
+                            height="180px"
+                            width="200px"
+                        />
+                        <div className="row nav-row">
+                            <div className="btn btn-primary bottom-button" onClick={this.authenticate}>Login</div>
+                        </div>
                     </div>
                 </Modal>
             )
