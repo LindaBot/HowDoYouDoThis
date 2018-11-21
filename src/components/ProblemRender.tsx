@@ -1,12 +1,15 @@
 import * as React from 'react'
 import List from '@material-ui/core/List';
+import {Button, Paper} from '@material-ui/core/';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer'
+import ArrowBack from '@material-ui/icons/ArrowBack'
 import Chat from '@material-ui/icons/Chat'
 import RenderProblemContent from './RenderProblemContent';
 import NewAnswerButton from './NewAnswerButton'
+import { Link } from 'react-router-dom';
 
 interface IState {
     solutionObjects: any,
@@ -52,7 +55,9 @@ export default class ProblemRender extends React.Component<any, IState>{
                 <div>
                     <NewAnswerButton problemID={this.props.problem.id}/>
                     <div className="container paddingTopBottom"> 
+                    
                         <div className="row">
+                        
                             <div className = "col-md-3">
                             <List component="nav">
                                 <ListItem
@@ -73,6 +78,15 @@ export default class ProblemRender extends React.Component<any, IState>{
                             </div>
                             {/* MuiList-padding-2 */}
                             <div className = "col-md-9 ">
+                            <Paper>
+                            <Link to="/">
+                                <Button variant="contained" color="primary">
+                                    
+                                    <ArrowBack/>Back to home
+                                </Button>
+                            </Link>
+                            </Paper>
+                            <br/>
                                 <RenderProblemContent 
                                     index={this.state.selectedIndex} 
                                     problem={this.props.problem} 
@@ -87,12 +101,14 @@ export default class ProblemRender extends React.Component<any, IState>{
         }
 
         // Loading
-        return("")
+        return(null);
     }
 
     private handleListItemClick = (e:any, i:any) => {
         this.setState({selectedIndex:i})
     }
+
+    
 
 
     private findSolutions = () =>{

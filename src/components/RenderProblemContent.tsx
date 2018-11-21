@@ -50,8 +50,9 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <h3 className="breakWord"> <b>{problem.title} </b> </h3> <br/>
                         <h4 className="breakWord"> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
-                        <p className="alignRight">Question submitted by: {this.state.questionAuthor}</p>
+                        <div className="alignRight"><p>Question submitted by: {this.state.questionAuthor}</p>
                         {admin || userID === this.props.problem.authorID ?(<NewQuestionEditButton problem={this.props.problem}/>):null}
+                        </div>
                     </div>
                 </Paper>
             )
@@ -70,7 +71,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                     <div>
                         <Button onClick={this.handleUpVote} disabled={this.state.upVoted}>Upvote</Button>{solution.upvotes}
                         <br/>
-                    {admin || userID === this.props.solution.authorID ?(<Button onClick={this.handleSolutionDelete} color="secondary">DELETE</Button>):null} 
+                    {admin || userID === this.props.solution.authorID ?(<div className="alignRight"><Button onClick={this.handleSolutionDelete} variant="contained" color="secondary">DELETE</Button></div>):null} 
                     </div>
                 </Paper>
             )

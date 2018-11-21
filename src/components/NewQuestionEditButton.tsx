@@ -19,7 +19,8 @@ export default class NewQuestionEditButton extends React.Component<any, IState>{
     render(){
         return(
             <div style={{display:"inline-block"}}>
-            <Button onClick={this.onClickOpen} className="navButton">Edit </Button>
+            <br/>
+            <Button onClick={this.onClickOpen} className="navButton" variant="contained">Edit </Button>
 
             <Slide direction="up" in={this.state.open}>
             <Dialog>
@@ -34,7 +35,7 @@ export default class NewQuestionEditButton extends React.Component<any, IState>{
                                 <CloseIcon />
                             </IconButton>
                             <Typography variant="h6" color="inherit" style={{flex: 1}}>
-                                Settings
+                                Edit Post
                             </Typography>
                         </Toolbar>
                     </AppBar>
