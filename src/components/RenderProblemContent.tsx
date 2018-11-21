@@ -84,7 +84,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
     }
 
     private handleUpVote = () =>{
-        const solutionObject = this.props.solution;
+        const solutionObject = this.props.solution[this.props.index-1];
         solutionObject.upvotes = solutionObject.upvotes+1;
         let postJSON = JSON.stringify(solutionObject);
         postJSON = JSON.parse(postJSON);
