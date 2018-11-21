@@ -3,6 +3,7 @@ import {TextField, Button} from '@material-ui/core'
 import CreatableSelect from 'react-select/lib/Creatable'
 import MediaStreamRecorder from 'msr'
 import VoiceIcon from '@material-ui/icons/SettingsVoice'
+import TranslateButton from './TranslateButton'
 
 interface IState{
     title: string,
@@ -49,6 +50,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 <TextField
                     required
                     label="Question description"
+                    placeholder="You can type in any language and click To English"
                     multiline
                     rowsMax="4"
                     rows="2"
@@ -61,7 +63,8 @@ export default class NewQuestion extends React.Component<any, IState>{
                 
                 <br/>
 
-                <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>
+                <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>&#160;&#160;&#160;&#160;
+                <TranslateButton text={this.state.description} callback={this.onChangeInput}/>
                 <br/>
 
                 
@@ -96,10 +99,12 @@ export default class NewQuestion extends React.Component<any, IState>{
                 return(this.setState({tag: e}));
             case "file":
                 return(this.setState({image: e.target.files}));
-            case "authorID":
-                return(this.setState({authorID: e.target.value}));
+            case "translation":
+                return(this.setState({description: e}));
         }
     }
+
+    
 
     private onSubmit = () => {
         const state = this.state;

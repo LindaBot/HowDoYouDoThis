@@ -2,6 +2,7 @@ import * as React from 'react'
 import {TextField, Button} from '@material-ui/core'
 import MediaStreamRecorder from 'msr'
 import VoiceIcon from '@material-ui/icons/SettingsVoice'
+import TranslateButton from './TranslateButton';
 
 interface IState{
     answer: string,
@@ -37,6 +38,7 @@ export default class NewSolution extends React.Component<any, IState>{
                 <TextField
                     required
                     label="Answer explanation"
+                    placeholder="You can type in any language and click on To English"
                     multiline
                     rowsMax="4"
                     rows="2"
@@ -49,11 +51,12 @@ export default class NewSolution extends React.Component<any, IState>{
                 
                 <br/>
 
-                <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>
+                <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>&#160;&#160;&#160;&#160;
+                <TranslateButton text={this.state.description} callback={this.onChangeInput}/>
                 <br/><br/>
 
                 <p>
-                    Optional photo upload
+                    Optional photo upload<br/>
                     <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>
                 </p> 
                 
@@ -72,6 +75,8 @@ export default class NewSolution extends React.Component<any, IState>{
                 return(this.setState({description: e.target.value}));
             case "file":
                 return(this.setState({image: e.target.files}));
+            case "translation":
+                return(this.setState({description: e}))
         }
     }
 
@@ -138,7 +143,7 @@ export default class NewSolution extends React.Component<any, IState>{
                 'Accept': 'application/json',
                 'Authorization': 'Bearer' + accessToken,
                 'Content-Type': 'audio/wav;codec=audio/pcm; samplerate=16000',
-                'Ocp-Apim-Subscription-Key': '7858d17484424d4d93d43c177c1268ce'
+                'Ocp-Apim-Subscription-Key': '89e0a4141353471fa73369cc6a75f78d'
             },    
             method: 'POST'
         }).then((res) => {
@@ -150,4 +155,6 @@ export default class NewSolution extends React.Component<any, IState>{
             //console.log("Error", error)
         });
     }
+
+    
 }

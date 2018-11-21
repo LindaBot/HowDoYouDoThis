@@ -18,7 +18,6 @@ export default class Header extends React.Component<{}>{
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                    
                     </Nav>
                     <Nav pullRight>
 
@@ -34,4 +33,5 @@ export default class Header extends React.Component<{}>{
         localStorage.removeItem("user");
         location.reload();
     }
+
 }
