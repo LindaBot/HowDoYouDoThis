@@ -4,7 +4,9 @@ import * as utf8 from 'utf8'
 
 interface IState {
     num: any,
-    upVoted: any
+    upVoted: any,
+    questionAuthor: any,
+    users: any
 }
 
 export default class RenderProblemContent extends React.Component<any, IState>{
@@ -12,8 +14,14 @@ export default class RenderProblemContent extends React.Component<any, IState>{
         super(props);
         this.state = {
             num:1,
-            upVoted: false
+            upVoted: false,
+            questionAuthor: "",
+            users: ""
         }
+    }
+
+    componentDidMount(){
+        this.getQuestionAuthor();
     }
 
 
@@ -38,11 +46,12 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <h3> <b>{problem.title} </b> </h3> <br/>
                         <h4> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
+                        <p className="alignRight">Question submitted by: {this.state.questionAuthor}</p>
                     </div>
                 </Paper>
             )
         } else {
-            const solution = this.props.solution;
+            const solution = this.props.solution[this.props.index-1];
             const userJSON = JSON.parse(localStorage.getItem("user") as string);
             const admin = userJSON.admin
             const userID = userJSON.id
@@ -89,6 +98,22 @@ export default class RenderProblemContent extends React.Component<any, IState>{
         .then((res: any) =>{
             console.log(res)
             this.setState({upVoted: true});
+        })
+    }
+
+    private getQuestionAuthor = () =>{
+        const url = "https://howdoidothisapixlin928.azurewebsites.net/api/User/" + this.props.problem.authorID;
+        console.log(url);
+        fetch(url, {
+            method: "GET"
+        })
+        .then(res => res.json())
+        .then(user => {
+            const name = user.firstName + " " + user.lastName
+            this.setState({questionAuthor: name});
+        })
+        .catch(err => {
+            this.setState({questionAuthor: "User Deleted"});
         })
     }
 }

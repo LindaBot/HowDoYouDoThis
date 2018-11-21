@@ -4,6 +4,7 @@ import LoginInterface from './components/LoginInterface'
 import AddQuestionButton from './components/AddQuestionButton';
 import QuestionTagSearchBar from './components/QuestionTagSearchBar';
 import QuestionShowcase from './components/QuestionShowcase'
+import NewSettingButton from './components/NewSettingButton'
 
 
 interface IState{
@@ -46,6 +47,7 @@ export default class App extends React.Component<{}, IState> {
     } else {
       return (
         <div className="container">
+          <NewSettingButton/>
           <AddQuestionButton suggestions={this.state.suggestions} />
           {this.state.suggestions === "" ? 
           <div>No Search is available right now</div> 

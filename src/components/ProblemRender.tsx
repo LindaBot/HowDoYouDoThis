@@ -76,7 +76,7 @@ export default class ProblemRender extends React.Component<any, IState>{
                                 <RenderProblemContent 
                                     index={this.state.selectedIndex} 
                                     problem={this.props.problem} 
-                                    solution={this.state.solutionObjects[this.state.selectedIndex-1]}
+                                    solution={this.state.solutionObjects}
                                 />
                             </div>
                         </div>
