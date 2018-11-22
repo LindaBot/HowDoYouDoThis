@@ -12,8 +12,8 @@ React + TypeScript app that acts as a platform where people can ask and answer e
 - ...
 
 ## Usage
-npm install <br/>
-npm start
+>npm install <br/>
+>npm start
 
 ## Website
 https://howdoyoudothisfrontendxlin928.azurewebsites.net
