@@ -38,9 +38,6 @@ export default class NewQuestion extends React.Component<any, IState>{
         if(event.key == "Escape") {
             this.props.onClose();
         }
-        if(event.key === "Enter") {
-            this.onSubmit();
-        }
     }
     
     render(){
