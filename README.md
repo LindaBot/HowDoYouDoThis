@@ -12,7 +12,7 @@ React + TypeScript app that acts as a platform where people can ask and answer e
 - ...
 
 ## Usage
-npm install
+npm install <br/>
 npm start
 
 ## Website
