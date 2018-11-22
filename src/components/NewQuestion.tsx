@@ -87,7 +87,7 @@ export default class NewQuestion extends React.Component<any, IState>{
                 /> <br/>
                 
                 <p>
-                    Optional photo upload
+                    Optional photo upload<br/>
                     <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>
                 </p> 
                 
