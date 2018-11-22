@@ -33,10 +33,19 @@ export default class NewAnswerButton extends React.Component<any, IState>{
     componentDidMount(){
         this.getUserData();
     }
+
+    private handleShortcut = (event: any) => {
+        if(event.key == "Escape") {
+            this.props.onClose();
+        }
+        if(event.key === "Enter") {
+            this.onSubmit();
+        }
+    }
     
     render(){
         return(
-            <div className="centre80">
+            <div className="centre80" onKeyDown={this.handleShortcut}>
                 <TextField
                 disabled
                 label="ID"

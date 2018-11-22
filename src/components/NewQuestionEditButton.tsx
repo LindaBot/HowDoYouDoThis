@@ -40,7 +40,7 @@ export default class NewQuestionEditButton extends React.Component<any, IState>{
                                 </Toolbar>
                             </AppBar>
                             <div className="fullscreen">
-                                <EditQuestionUI onSubmit={this.onSubmit} problem={this.props.problem}/>
+                                <EditQuestionUI onSubmit={this.onSubmit} problem={this.props.problem} onClose={this.handleClose}/>
                             </div>
                         </div>
                     </Dialog>

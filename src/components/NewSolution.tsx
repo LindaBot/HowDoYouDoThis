@@ -21,10 +21,19 @@ export default class NewSolution extends React.Component<any, IState>{
             user: JSON.parse(localStorage.getItem("user") as string)
         }
     };
+
+    private handleShortcut = (event: any) => {
+        if(event.key == "Escape") {
+            this.props.onClose();
+        }
+        if(event.key === "Enter") {
+            this.onSubmit();
+        }
+    }
     
     render(){
         return(
-            <div className="centre80">
+            <div className="centre80" onKeyDown={this.handleShortcut}>
                 <h2> New Solution </h2>
                 <TextField
                     required

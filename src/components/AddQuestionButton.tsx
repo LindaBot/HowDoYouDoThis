@@ -46,7 +46,7 @@ class AddQuestionButton extends React.Component<any, IState>{
                                     </Toolbar>
                                 </AppBar>
                                 <div className="fullscreen">
-                                    <NewQuestion onSubmit={this.onSubmit} suggestions={this.props.suggestions}/>
+                                    <NewQuestion onSubmit={this.onSubmit} suggestions={this.props.suggestions} onClose={this.handleClose}/>
                                 </div>
                             </div>
                         </Dialog>

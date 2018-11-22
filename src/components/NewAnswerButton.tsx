@@ -47,7 +47,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
                                 </Toolbar>
                             </AppBar>
                             <div className="fullscreen">
-                                <NewSolution onSubmit={this.onSubmit}/>
+                                <NewSolution onSubmit={this.onSubmit} onClose={this.handleClose}/>
                             </div>
                         </div>
                     </Dialog>

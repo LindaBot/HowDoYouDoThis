@@ -39,7 +39,7 @@ export default class NewSettingButton extends React.Component<any, IState>{
                                 </Toolbar>
                             </AppBar>
                             <div className="fullscreen">
-                                <SettingUI onSubmit={this.onSubmit}/>
+                                <SettingUI onSubmit={this.onSubmit} onClose={this.handleClose}/>
                             </div>
                         </div>
                     </Dialog>
