@@ -27,10 +27,10 @@ export default class NewQuestion extends React.Component<any, IState>{
             user: JSON.parse(localStorage.getItem("user") as string),
             suggestions: [
                 { label: "" },
-              ].map(suggestion => ({
+            ].map(suggestion => ({
                 value: suggestion.label,
                 label: suggestion.label
-              }))
+            }))
         }
     };
     
@@ -38,43 +38,43 @@ export default class NewQuestion extends React.Component<any, IState>{
         return(
             <div className="centre80">
                 <h2> New Question </h2>
+
                 <TextField
-                    required
-                    label="Question title"
-                    margin="normal"
-                    variant="outlined"
-                    fullWidth
-                    value={this.state.title}
-                    onChange={ (e) => this.onChangeInput(e, "title")}
+                required
+                label="Question title"
+                margin="normal"
+                variant="outlined"
+                fullWidth
+                value={this.state.title}
+                onChange={ (e) => this.onChangeInput(e, "title")}
                 /> <br/>
+
                 <TextField
-                    required
-                    label="Question description"
-                    placeholder="You can type in any language and click To English"
-                    multiline
-                    rowsMax="4"
-                    rows="2"
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    value={this.state.description}
-                    onChange={ (e) => this.onChangeInput(e, "description")}
+                required
+                label="Question description"
+                placeholder="You can type in any language and click To English"
+                multiline
+                rowsMax="4"
+                rows="2"
+                fullWidth
+                margin="normal"
+                variant="outlined"
+                value={this.state.description}
+                onChange={ (e) => this.onChangeInput(e, "description")}
                 /> 
                 
                 <br/>
-
+                
                 <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>&#160;&#160;&#160;&#160;
                 <TranslateButton text={this.state.description} callback={this.onChangeInput}/>
                 <br/>
-
-                
                 
                 <CreatableSelect 
-                    className="selectInput"
-                    options={this.props.suggestions}
-                    placeholder="Search a Tag*"
-                    value={this.state.tag}
-                    onChange={ (e) => this.onChangeInput(e, "tag")}
+                className="selectInput"
+                options={this.props.suggestions}
+                placeholder="Search a Tag*"
+                value={this.state.tag}
+                onChange={ (e) => this.onChangeInput(e, "tag")}
                 /> <br/>
                 
                 <p>
@@ -86,26 +86,26 @@ export default class NewQuestion extends React.Component<any, IState>{
                     <Button style={{textAlign:"right", height:"20px", margin:"20px 0"}} onClick={this.onSubmit} variant="contained">Submit Question</Button>
                 </div>
             </div>
-        )
-    }
-
+            )
+        }
+        
     private onChangeInput = (e:any, type: string) => {
         switch (type){
             case "title":
-                return(this.setState({title: e.target.value}));
+            return(this.setState({title: e.target.value}));
             case "description":
-                return(this.setState({description: e.target.value}));
+            return(this.setState({description: e.target.value}));
             case "tag":
-                return(this.setState({tag: e}));
+            return(this.setState({tag: e}));
             case "file":
-                return(this.setState({image: e.target.files}));
+            return(this.setState({image: e.target.files}));
             case "translation":
-                return(this.setState({description: e}));
+            return(this.setState({description: e}));
         }
     }
-
     
-
+    
+    
     private onSubmit = () => {
         const state = this.state;
         //console.log();
@@ -124,7 +124,7 @@ export default class NewQuestion extends React.Component<any, IState>{
         formData.append("authorID", state.user.id);
         this.props.onSubmit(formData);
     }
-
+    
     private inputByVoice = () => {
         const mediaConstraints = {
             audio: true
@@ -138,49 +138,49 @@ export default class NewQuestion extends React.Component<any, IState>{
             }
             mediaRecorder.start(3000);
         }
-    
+        
         navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
-    
+        
         function onMediaError(e: any) {
             console.error('media error', e);
         }
     }
-
+    
     private PostAudio = (blob: any) => {
         let accessToken: any;
         fetch('https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken', {
-            headers: {
-                'Content-Length': '0',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Ocp-Apim-Subscription-Key': '89e0a4141353471fa73369cc6a75f78d'
-            },
-            method: 'POST'
-        }).then((response) => {
-            // //console.log(response.text())
-            return response.text()
-        }).then((response) => {
-            //console.log(response)
-            accessToken = response
-        }).catch((error) => {
-            //console.log("Error", error)
-        });
-           // posting audio
-           fetch('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US', {
-            body: blob, // this is a .wav audio file    
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer' + accessToken,
-                'Content-Type': 'audio/wav;codec=audio/pcm; samplerate=16000',
-                'Ocp-Apim-Subscription-Key': '7858d17484424d4d93d43c177c1268ce'
-            },    
-            method: 'POST'
-        }).then((res) => {
-            return res.json()
-        }).then((res: any) => {
-            const text = (res.DisplayText as string).slice(0, -1)
-            this.setState({description: text});
-        }).catch((error) => {
-            //console.log("Error", error)
-        });
+        headers: {
+            'Content-Length': '0',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Ocp-Apim-Subscription-Key': '89e0a4141353471fa73369cc6a75f78d'
+        },
+        method: 'POST'
+    }).then((response) => {
+        // //console.log(response.text())
+        return response.text()
+    }).then((response) => {
+        //console.log(response)
+        accessToken = response
+    }).catch((error) => {
+        //console.log("Error", error)
+    });
+    // posting audio
+    fetch('https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US', {
+    body: blob, // this is a .wav audio file    
+    headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer' + accessToken,
+        'Content-Type': 'audio/wav;codec=audio/pcm; samplerate=16000',
+        'Ocp-Apim-Subscription-Key': '7858d17484424d4d93d43c177c1268ce'
+    },    
+    method: 'POST'
+    }).then((res) => {
+        return res.json()
+    }).then((res: any) => {
+        const text = (res.DisplayText as string).slice(0, -1)
+        this.setState({description: text});
+    }).catch((error) => {
+        //console.log("Error", error)
+    });
     }
 }

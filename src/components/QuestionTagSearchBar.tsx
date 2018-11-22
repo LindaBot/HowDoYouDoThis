@@ -19,19 +19,18 @@ export default class QuestionTagSearchBar extends React.Component<any, IState>{
     render(){
         return(
             <div>
-                
                 <div className="row">
-                <h3 className="col-md-8">Search by Tags</h3>
-                <Select 
-                    className="col-md-8"
-                    options={this.props.suggestions}
-                    value={this.state.tag}
-                    onChange={this.handleTagChange}
-                />
-                <div className="centreAtSmall">
-                <Button className="col-md-2" onClick={this.props.searchTag}>Search</Button>
-                <Button className="col-md-2" onClick={this.handleClear}>Clear</Button>
-                </div>
+                    <h3 className="col-md-8">Search by Tags</h3>
+                    <Select 
+                        className="col-md-8"
+                        options={this.props.suggestions}
+                        value={this.state.tag}
+                        onChange={this.handleTagChange}
+                    />
+                    <div className="centreAtSmall">
+                        <Button className="col-md-2" onClick={this.props.searchTag}>Search</Button>
+                        <Button className="col-md-2" onClick={this.handleClear}>Clear</Button>
+                    </div>
                 </div>
             </div>
         )

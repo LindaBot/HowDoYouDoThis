@@ -17,10 +17,7 @@ export default class Header extends React.Component<{}>{
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <Nav>
-                    </Nav>
                     <Nav pullRight>
-
                         <NavItem onClick={this.logout}>
                             Logout
                         </NavItem>

@@ -38,8 +38,7 @@ export default class QuestionShowcase extends React.Component<any, IState>{
                 </div>
             )
         } else {
-            return
+            return(null)
         }
-    }
-    
+    } 
 }

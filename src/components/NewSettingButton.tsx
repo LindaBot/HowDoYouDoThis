@@ -19,32 +19,32 @@ export default class NewSettingButton extends React.Component<any, IState>{
     render(){
         return(
             <div style={{display:"inline-block"}}>
-            <Button onClick={this.onClickOpen} className="navButton">Settings </Button>
+                <Button onClick={this.onClickOpen} className="navButton">Settings </Button>
 
-            <Slide direction="up" in={this.state.open}>
-            <Dialog>
-                <div style={{paddingTop:"0px"}}>
-                    <AppBar style={{position: "relative"}}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                onClick={this.handleClose}
-                                aria-label="Close"
-                            >
-                                <CloseIcon />
-                            </IconButton>
-                            <Typography variant="h6" color="inherit" style={{flex: 1}}>
-                                Settings
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <div className="fullscreen">
-                        <SettingUI onSubmit={this.onSubmit}/>
-                    </div>
-                </div>
-            </Dialog>
-        </Slide>
-        </div>
+                <Slide direction="up" in={this.state.open}>
+                    <Dialog>
+                        <div style={{paddingTop:"0px"}}>
+                            <AppBar style={{position: "relative"}}>
+                                <Toolbar>
+                                    <IconButton
+                                        color="inherit"
+                                        onClick={this.handleClose}
+                                        aria-label="Close"
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                    <Typography variant="h6" color="inherit" style={{flex: 1}}>
+                                        Settings
+                                    </Typography>
+                                </Toolbar>
+                            </AppBar>
+                            <div className="fullscreen">
+                                <SettingUI onSubmit={this.onSubmit}/>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Slide>
+            </div>
         )
     }
 

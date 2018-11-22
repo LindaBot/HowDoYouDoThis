@@ -35,6 +35,7 @@ export default class NewSolution extends React.Component<any, IState>{
                     value={this.state.answer}
                     onChange={ (e) => this.onChangeInput(e, "title")}
                 /> <br/>
+
                 <TextField
                     required
                     label="Answer explanation"
@@ -50,11 +51,11 @@ export default class NewSolution extends React.Component<any, IState>{
                 /> 
                 
                 <br/>
-
+                                                                                                            {/* white spaces for formatting  */}
                 <Button className="speechButton"onClick={this.inputByVoice}><VoiceIcon/>Describe with speech</Button>&#160;&#160;&#160;&#160;
                 <TranslateButton text={this.state.description} callback={this.onChangeInput}/>
-                <br/><br/>
-
+                <br/>
+                <br/>
                 <p>
                     Optional photo upload<br/>
                     <input type="file" onChange={ (e) => this.onChangeInput(e, "file")}/>

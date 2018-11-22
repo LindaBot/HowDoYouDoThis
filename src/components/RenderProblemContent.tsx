@@ -22,6 +22,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
     }
 
     componentDidMount(){
+        // To be ran on initiation to change the state
         this.getQuestionAuthor();
         this.setState({user: JSON.parse(localStorage.getItem("user") as string)})
     }
@@ -50,8 +51,11 @@ export default class RenderProblemContent extends React.Component<any, IState>{
                         <h3 className="breakWord"> <b>{problem.title} </b> </h3> <br/>
                         <h4 className="breakWord"> {problem.description} </h4>
                         <img src={problem.diagramURL} className="maxWidth100"/>
-                        <div className="alignRight"><p>Question submitted by: {this.state.questionAuthor}</p>
-                        {admin || userID === this.props.problem.authorID ?(<NewQuestionEditButton problem={this.props.problem}/>):null}
+                        <div className="alignRight">
+                            <p>
+                                Question submitted by: {this.state.questionAuthor}
+                            </p>
+                            {admin || userID === this.props.problem.authorID ?(<NewQuestionEditButton problem={this.props.problem}/>):null}
                         </div>
                     </div>
                 </Paper>

@@ -21,38 +21,38 @@ export default class NewAnswerButton extends React.Component<any, IState>{
     render(){
         return(
             <div>
-            <div className="addIcon">
-                <Tooltip title="Add Answer">
-                    <Button variant="fab" color="secondary" onClick={this.onClickAddAnswer}>
-                    <AddIcon />
-                    </Button>
-                </Tooltip>
-            </div>
-
-            <Slide direction="up" in={this.state.open}>
-            <Dialog>
-                <div style={{paddingTop:"0px"}}>
-                    <AppBar style={{position: "relative"}}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                onClick={this.handleClose}
-                                aria-label="Close"
-                            >
-                                <CloseIcon />
-                            </IconButton>
-                            <Typography variant="h6" color="inherit" style={{flex: 1}}>
-                                Post
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <div className="fullscreen">
-                        <NewSolution onSubmit={this.onSubmit}/>
-                    </div>
+                <div className="addIcon">
+                    <Tooltip title="Add Answer">
+                        <Button variant="fab" color="secondary" onClick={this.onClickAddAnswer}>
+                            <AddIcon />
+                        </Button>
+                    </Tooltip>
                 </div>
-            </Dialog>
-        </Slide>
-        </div>
+
+                <Slide direction="up" in={this.state.open}>
+                    <Dialog>
+                        <div style={{paddingTop:"0px"}}>
+                            <AppBar style={{position: "relative"}}>
+                                <Toolbar>
+                                    <IconButton
+                                        color="inherit"
+                                        onClick={this.handleClose}
+                                        aria-label="Close"
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                    <Typography variant="h6" color="inherit" style={{flex: 1}}>
+                                        Post
+                                    </Typography>
+                                </Toolbar>
+                            </AppBar>
+                            <div className="fullscreen">
+                                <NewSolution onSubmit={this.onSubmit}/>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Slide>
+            </div>
         )
     }
 

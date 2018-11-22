@@ -68,7 +68,7 @@ export default class ProblemRender extends React.Component<any, IState>{
                                     <ListItemIcon>
                                     <QuestionAnswer />
                                     </ListItemIcon>
-                                    <ListItemText primary="Inbox" />
+                                    <ListItemText primary="Question" />
                                 </ListItem>
 
                                 {solutionsRender}
@@ -107,9 +107,6 @@ export default class ProblemRender extends React.Component<any, IState>{
     private handleListItemClick = (e:any, i:any) => {
         this.setState({selectedIndex:i})
     }
-
-    
-
 
     private findSolutions = () =>{
         const questionID = this.props.problem.id;

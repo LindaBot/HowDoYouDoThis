@@ -31,45 +31,40 @@ export default class LoginInterface extends React.Component<any, IState>{
 
     public render(){
         return(
-
-
-
             <Paper className="modal-dialog" style={{ width: "500px"}}>
+                <h2>Please login or register</h2>
+                <AppBar position="static" color="default">
+                    <Tabs
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        fullWidth
+                    >
+                        <Tab label="Sign in" />
+                        <Tab label="Register" />
+                    </Tabs>
+                </AppBar>
 
-            
-            <h2>Please login or register</h2>
-            <AppBar position="static" color="default">
-            <Tabs
-                value={this.state.value}
-                onChange={this.handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                fullWidth
-            >
-                <Tab label="Sign in" />
-                <Tab label="Register" />
-            </Tabs>
-            </AppBar>
+                <SwipeableViews
+                    index={this.state.value}
+                    onChangeIndex={this.handleChange}
+                    >
+                    <Typography component="div" style={{ padding: 8 * 3 }}>
+                        <div className="center">
+                            <LoginForm onSubmit={this.loginClick} hintText={"Login"}/>
+                        </div>
+                    </Typography>
 
-            <SwipeableViews
-                index={this.state.value}
-                onChangeIndex={this.handleChange}
-                >
-                <Typography component="div" style={{ padding: 8 * 3 }}>
-                <div className="center">
-                    <LoginForm onSubmit={this.loginClick} hintText={"Login"}/>
-                    </div>
-                </Typography>
+                    <Typography component="div" style={{ padding: 8 * 3 }}>
+                        <RegisterForm onSubmit={this.registerClick} hintText={"Register"}/>
+                    </Typography>
 
-                <Typography component="div" style={{ padding: 8 * 3 }}>
-                    <RegisterForm onSubmit={this.registerClick} hintText={"Register"}/>
-                </Typography>
+                </SwipeableViews>
 
-            </SwipeableViews>
+                {(this.state.modal) ? (<FaceUnlockActivity authenticated={this.authenticated}/>) : ""}
 
-            {(this.state.modal) ? (<FaceUnlockActivity authenticated={this.authenticated}/>) : ""}
-
-        </Paper>
+            </Paper>
         )
     }
 

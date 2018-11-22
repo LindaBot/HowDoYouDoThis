@@ -22,6 +22,7 @@ export default class QuestionItem extends React.Component<any, IState>{
         const user = JSON.parse(localStorage.getItem("user") as string);
         //console.log(question.diagramURL)
         if (question.diagramURL === ""){
+            // Default Image if there is no image provided
             question.diagramURL = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX1458494.jpg"
         }
         if (this.state.redirect == true){
@@ -48,13 +49,8 @@ export default class QuestionItem extends React.Component<any, IState>{
                             {user.admin===true || user.id === question.authorID? <Button onClick={this.deleteQuestion} color="secondary"> Delete </Button> : ""}
                         </CardActions>
                     </Card> 
-
-            )
-            
-            
-        }
-
-        
+            )    
+        }   
     }
 
     private goToQuestion = () =>{

@@ -100,6 +100,7 @@ export default class UserPassBut extends React.Component<any, IState>{
         let pass = this.state.password;
         pass = CryptoJS.AES.encrypt(this.state.password, "secret").toString();
         let formData = new FormData();
+        // Forming form data to make the request
         formData.append('firstName', this.state.firstName);
         formData.append('lastName', this.state.lastName);
         formData.append('username', this.state.username);

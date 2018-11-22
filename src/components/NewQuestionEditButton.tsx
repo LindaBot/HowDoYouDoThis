@@ -19,33 +19,33 @@ export default class NewQuestionEditButton extends React.Component<any, IState>{
     render(){
         return(
             <div style={{display:"inline-block"}}>
-            <br/>
-            <Button onClick={this.onClickOpen} className="navButton" variant="contained">Edit </Button>
+                <br/>
+                <Button onClick={this.onClickOpen} className="navButton" variant="contained">Edit </Button>
 
-            <Slide direction="up" in={this.state.open}>
-            <Dialog>
-                <div style={{paddingTop:"0px"}}>
-                    <AppBar style={{position: "relative"}}>
-                        <Toolbar>
-                            <IconButton
-                                color="inherit"
-                                onClick={this.handleClose}
-                                aria-label="Close"
-                            >
-                                <CloseIcon />
-                            </IconButton>
-                            <Typography variant="h6" color="inherit" style={{flex: 1}}>
-                                Edit Post
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                    <div className="fullscreen">
-                        <EditQuestionUI onSubmit={this.onSubmit} problem={this.props.problem}/>
-                    </div>
-                </div>
-            </Dialog>
-        </Slide>
-        </div>
+                <Slide direction="up" in={this.state.open}>
+                    <Dialog>
+                        <div style={{paddingTop:"0px"}}>
+                            <AppBar style={{position: "relative"}}>
+                                <Toolbar>
+                                    <IconButton
+                                        color="inherit"
+                                        onClick={this.handleClose}
+                                        aria-label="Close"
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
+                                    <Typography variant="h6" color="inherit" style={{flex: 1}}>
+                                        Edit Post
+                                    </Typography>
+                                </Toolbar>
+                            </AppBar>
+                            <div className="fullscreen">
+                                <EditQuestionUI onSubmit={this.onSubmit} problem={this.props.problem}/>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Slide>
+            </div>
         )
     }
 
