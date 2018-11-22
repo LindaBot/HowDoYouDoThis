@@ -27,9 +27,15 @@ export default class UserPassBut extends React.Component<any, IState>{
         };
     }
 
+    private handleShortcut = (event: any) => {
+        if(event.key === "Enter") {
+            this.onSubmit();
+        }
+    }
+
     public render(){
         return(
-            <div>
+            <div onKeyDown={this.handleShortcut}>
                 <TextField
                     id="username"
                     label="Username"
@@ -97,6 +103,10 @@ export default class UserPassBut extends React.Component<any, IState>{
     }
 
     private onSubmit = () =>{
+        if (this.state.username == "" || this.state.password == "" || this.state.firstName == "" || this.state.lastName == ""){
+            alert("Please fill in all information.")
+            return;
+        }
         let pass = this.state.password;
         pass = CryptoJS.AES.encrypt(this.state.password, "secret").toString();
         let formData = new FormData();

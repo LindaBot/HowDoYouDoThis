@@ -15,9 +15,15 @@ export default class UserPassBut extends React.Component<any, IState>{
         };
     }
 
+    private handleShortcut = (event: any) => {
+        if(event.key === "Enter") {
+            this.onSubmit();
+        }
+    }
+
     public render(){
         return(
-            <div>
+            <div onKeyDown={this.handleShortcut}>
                 <TextField
                     id="username"
                     label="Username"
