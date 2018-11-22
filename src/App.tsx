@@ -58,7 +58,7 @@ export default class App extends React.Component<{}, IState> {
           
           <AddQuestionButton suggestions={this.state.suggestions} />
           {this.state.suggestions === "" ? 
-          <div>No Search is available right now</div> 
+          <div>Please wait while the website is waking up from hibernation</div> 
           : 
           <QuestionTagSearchBar userInfo={this.state.userInfo} suggestions={this.state.suggestions} onChange={this.handleChangeTag} searchTag={this.getQuestions} clearTags={this.clearTags}/>}
           {this.state.questions === "" ? "" : <QuestionShowcase tag={this.state.currentTag} questions={this.state.questions}/>}
