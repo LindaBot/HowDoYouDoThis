@@ -132,10 +132,9 @@ export default class NewQuestion extends React.Component<any, IState>{
     }
     
     private inputByVoice = () => {
-        const mediaConstraints = {
-            audio: true
-        }
-        const onMediaSuccess = (stream: any) => {
+        // The following two functions are a modification of NZMSA's tutorial code
+        navigator.mediaDevices.getUserMedia({audio:true})
+        .then((stream)=> {
             const mediaRecorder = new MediaStreamRecorder(stream);
             mediaRecorder.mimeType = 'audio/wav'; // check this line for audio/wav
             mediaRecorder.ondataavailable = (blob: any) => {
@@ -143,13 +142,11 @@ export default class NewQuestion extends React.Component<any, IState>{
                 this.PostAudio(blob);
             }
             mediaRecorder.start(3000);
-        }
-        
-        navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
-        
-        function onMediaError(e: any) {
-            console.error('media error', e);
-        }
+        })
+        .catch((e:any)=>{
+            console.log(e);
+            alert("Server error, please try again later.")
+        })
     }
     
     private PostAudio = (blob: any) => {
