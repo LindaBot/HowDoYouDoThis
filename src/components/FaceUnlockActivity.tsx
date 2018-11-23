@@ -51,6 +51,7 @@ export default class FaceUnlockActivity extends React.Component<any, IState> {
     }
 
     private getFaceRecognitionResult = (image: string) => {
+        // The following function is a modification of NZMSA's tutorial code
         const url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/ed26e7a6-b448-4610-a21b-e2eda6b8f831/image?iterationId=c02ebdbf-df5a-4367-ae54-cbac10915384"
 		if (image === null) {
 			return;

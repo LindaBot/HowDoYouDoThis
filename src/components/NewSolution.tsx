@@ -105,6 +105,7 @@ export default class NewSolution extends React.Component<any, IState>{
     }
 
     private inputByVoice = () => {
+        // The following two functions are a modification of NZMSA's tutorial code 
         const mediaConstraints = {
             audio: true
         }
@@ -126,6 +127,7 @@ export default class NewSolution extends React.Component<any, IState>{
     }
 
     private PostAudio = (blob: any) => {
+        // The following two functions are a modification of NZMSA's tutorial code
         let accessToken: any;
         fetch('https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken', {
             headers: {
