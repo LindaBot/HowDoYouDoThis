@@ -59,7 +59,7 @@ export default class QuestionItem extends React.Component<any, IState>{
     
     private deleteQuestion = () =>{
         const question = this.props.question;
-        const url = ("https://howdoidothisapixlin928.azurewebsites.net/api/Question/" + question.id)
+        const url = ("https://howdoyoudothisapi.azurewebsites.net/api/Question/" + question.id)
         fetch(url, {
             method: "DELETE"
         })

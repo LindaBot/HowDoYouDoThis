@@ -77,7 +77,7 @@ export default class LoginInterface extends React.Component<any, IState>{
         let userpass = formData.get("password") as string;
         let username = formData.get("username") as string;
     
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/User', {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/User', {
             method: 'GET'
         })
         .then(response => response.json())
@@ -114,7 +114,7 @@ export default class LoginInterface extends React.Component<any, IState>{
     }
 
     private registerClick = (userData: FormData) => {
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/User', {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/User', {
             // body: userData,
             method: 'POST',
             body: userData,

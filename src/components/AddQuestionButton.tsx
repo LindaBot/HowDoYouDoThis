@@ -67,7 +67,7 @@ class AddQuestionButton extends React.Component<any, IState>{
     private onSubmit = (formData: FormData) => {
         //console.log(formData);
         this.setState({open: false});
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Question', {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/Question', {
             // body: userData,
             method: 'POST',
             body: formData,

@@ -63,7 +63,7 @@ export default class ProblemDetail extends React.Component<any, IState>{
         }
         //console.log(userObject);
 
-        fetch("https://howdoidothisapixlin928.azurewebsites.net/api/Question/" + this.props.match.params.id, {
+        fetch("https://howdoyoudothisapi.azurewebsites.net/api/Question/" + this.props.match.params.id, {
           method: 'GET'
         })
         .then(res => res.json())

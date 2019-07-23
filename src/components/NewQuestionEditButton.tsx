@@ -59,7 +59,7 @@ export default class NewQuestionEditButton extends React.Component<any, IState>{
 
     private onSubmit = (newProblemData: any) => {
         this.setState({open: false});
-        const url = 'https://howdoidothisapixlin928.azurewebsites.net/api/Question/'+newProblemData.id;
+        const url = 'https://howdoyoudothisapi.azurewebsites.net/api/Question/'+newProblemData.id;
         //console.log(url);
         fetch(url, {
             body: JSON.stringify(newProblemData),

@@ -81,7 +81,7 @@ export default class App extends React.Component<{}, IState> {
   }
 
   private getTags = () => {
-      fetch("https://howdoidothisapixlin928.azurewebsites.net/api/question/tag", {
+      fetch("https://howdoyoudothisapi.azurewebsites.net/api/question/tag", {
           method: 'GET'
       })
       .then(res => res.json())
@@ -97,11 +97,11 @@ export default class App extends React.Component<{}, IState> {
   public getQuestions = () =>{
     let url;
     if (this.state.currentTag === ""){
-        url = "https://howdoidothisapixlin928.azurewebsites.net/api/Question"
+        url = "https://howdoyoudothisapi.azurewebsites.net/api/Question"
     } else {
         //console.log("TAG")
         //console.log(this.state.currentTag);
-        url = ("https://howdoidothisapixlin928.azurewebsites.net/api/Question/tag/" + this.state.currentTag.value)
+        url = ("https://howdoyoudothisapi.azurewebsites.net/api/Question/tag/" + this.state.currentTag.value)
     }
         fetch(url, {
             // body: userData,

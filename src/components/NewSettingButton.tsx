@@ -59,7 +59,7 @@ export default class NewSettingButton extends React.Component<any, IState>{
     private onSubmit = (newUserData: any) => {
         //console.log(newUserData);
         this.setState({open: false});
-        const url = 'https://howdoidothisapixlin928.azurewebsites.net/api/User/'+newUserData.id;
+        const url = 'https://howdoyoudothisapi.azurewebsites.net/api/User/'+newUserData.id;
         //console.log(url);
         fetch(url, {
             body: JSON.stringify(newUserData),

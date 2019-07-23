@@ -68,7 +68,7 @@ export default class NewAnswerButton extends React.Component<any, IState>{
         //console.log(formData);
         formData.append("questionID", this.props.problemID);
         this.setState({open: false});
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution', {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/Solution', {
             // body: userData,
             method: 'POST',
             body: formData,

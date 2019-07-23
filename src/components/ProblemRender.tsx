@@ -110,7 +110,7 @@ export default class ProblemRender extends React.Component<any, IState>{
 
     private findSolutions = () =>{
         const questionID = this.props.problem.id;
-        fetch("https://howdoidothisapixlin928.azurewebsites.net/api/Solution/", {
+        fetch("https://howdoyoudothisapi.azurewebsites.net/api/Solution/", {
           method: 'GET'
         })
         .then(res => res.json())

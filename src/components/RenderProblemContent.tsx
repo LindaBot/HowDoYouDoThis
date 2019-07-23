@@ -84,7 +84,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
 
     private handleSolutionDelete = () =>{
         const solutionObject = this.props.solution[this.props.index-1];
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/' + solutionObject.id, {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/Solution/' + solutionObject.id, {
             method: "DELETE"
         })
         .then((res: any) => {
@@ -100,7 +100,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
         postJSON = JSON.parse(postJSON);
         //console.log(typeof(postJSON));
         //console.log(postJSON); 
-        fetch('https://howdoidothisapixlin928.azurewebsites.net/api/Solution/'+solutionObject.id, {
+        fetch('https://howdoyoudothisapi.azurewebsites.net/api/Solution/'+solutionObject.id, {
             method: "PUT",
             body: JSON.stringify(postJSON),
             headers: {"Content-Type": "application/json"}
@@ -112,7 +112,7 @@ export default class RenderProblemContent extends React.Component<any, IState>{
     }
 
     private getQuestionAuthor = () =>{
-        const url = "https://howdoidothisapixlin928.azurewebsites.net/api/User/" + this.props.problem.authorID;
+        const url = "https://howdoyoudothisapi.azurewebsites.net/api/User/" + this.props.problem.authorID;
         //console.log(url);
         fetch(url, {
             method: "GET"
