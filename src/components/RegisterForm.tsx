@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Button, TextField} from "@material-ui/core"
 import * as CryptoJS from 'crypto-js'
-import FacebookLogin from 'react-facebook-login'
+// import FacebookLogin from 'react-facebook-login'
 
 interface IState{
     username: string,
@@ -34,24 +34,24 @@ export default class UserPassBut extends React.Component<any, IState>{
         }
     }
 
-    private responseFacebook = (response: any) =>{
-        const name = response.name;
-        this.setState({
-            username: response.email,
-            firstName: name.substr(0, name.indexOf(' ')),
-            lastName: name.substr(name.indexOf(' ')+1),
-        })
-    }
+    // private responseFacebook = (response: any) =>{
+    //     const name = response.name;
+    //     this.setState({
+    //         username: response.email,
+    //         firstName: name.substr(0, name.indexOf(' ')),
+    //         lastName: name.substr(name.indexOf(' ')+1),
+    //     })
+    // }
 
     public render(){
         return(
             <div onKeyDown={this.handleShortcut}>
-                <FacebookLogin
+                {/* <FacebookLogin
                     appId="254085718606555"
                     autoLoad={true}
                     fields="name, email"
                     callback={this.responseFacebook}
-                /><br/>
+                /><br/> */}
 
                 <TextField
                     id="username"
